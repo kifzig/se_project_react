@@ -1,8 +1,9 @@
 /* @font-face {
   font-family: "CabinetGrotesk";
   src: local("CabinetGrotesk"),
-    url("../../vendor/fonts/CabinetGrotesk-Regular.woff");
-}
+    url("../../vendor/fonts/CabinetGrotesk-Bold.woff") format("truetype");
+  font-weight: bold;
+} */
 
 .header {
   display: flex;
@@ -10,20 +11,17 @@
   align-items: center;
   min-height: 60px;
   padding: 0 20px;
-  font-family: "CabinetGrotesk", serif;
+  font-family: "CabinetGrotesk-Bold", serif;
   font-size: 20px;
   line-height: 25px;
   font-weight: 700;
 }
 
 .header__add-clothes-button {
-  font-family: "CabinetGrotesk", serif;
-  font-size: 20px;
-  line-height: 25px;
-  font-weight: 700;
   background: none;
   border: none;
 }
+
 .header__logo {
   display: flex;
   gap: 20px;
@@ -34,4 +32,4 @@
   display: flex;
   gap: 20px;
   align-items: center;
-} */
+}

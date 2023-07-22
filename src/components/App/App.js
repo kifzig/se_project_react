@@ -1,26 +1,20 @@
-import logo from "../../logo.svg";
+// import logo from "../../logo.svg";
 import "./App.css";
+import Header from "../Header/Header";
 
 function App() {
   return (
     <div>
-      <header className="header">
-        <div className="header__logo">
+      <Header />
+      <main>
+        <section id="weather" className="weather">
+          <div> 75F</div>
           <div>
-            <img src="/images/logo.svg" alt="logo" />
+            <img src="images/day/day_sunny.svg" alt="Weather" />
           </div>
-          <div>July 10, San Antonio</div>
-        </div>
-        <div className="header__avatar-logo">
-          <div>
-            <button type="text">+ Add New Clothes</button>
-          </div>
-          <div>Name</div>
-          <div>
-            <img src="/images/avatar.svg" alt="logo" />
-          </div>
-        </div>
-      </header>
+        </section>
+        <section id="clothing-cards">Card Section</section>
+      </main>
     </div>
   );
 }
