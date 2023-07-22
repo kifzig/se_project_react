@@ -1,6 +1,2 @@
-@font-face {
-  font-family: "CabinetGrotesk-Bold";
-  src: local("CabinetGrotesk-Bold"),
-    url("./vendor/fonts/CabinetGrotesk-Bold.woff") format("truetype");
-  font-weight: bold;
-}
+@import url("./vendor/normalize.css");
+@import url("./vendor/fonts.css");

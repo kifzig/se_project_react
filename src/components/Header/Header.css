@@ -18,6 +18,8 @@
 }
 
 .header__add-clothes-button {
+  font-family: "CabinetGrotesk-Bold", serif;
+  font-size: 20px;
   background: none;
   border: none;
 }

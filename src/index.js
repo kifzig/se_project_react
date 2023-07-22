@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./components/App/App.js";
 import reportWebVitals from "./reportWebVitals";
-import "./vendor/fonts/CabinetGrotesk-Regular.woff";
+// import "./vendor/fonts/CabinetGrotesk-Bold.woff";
+// import "./vendor/fonts/CabinetGrotesk-Regular.woff";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

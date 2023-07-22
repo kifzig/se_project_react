@@ -1,37 +1,20 @@
-/* @font-face {
-  font-family: "CabinetGrotesk";
-  src: local("CabinetGrotesk"),
-    url("../../vendor/fonts/CabinetGrotesk-Regular.woff");
+.weather {
+  position: relative;
+  font-family: "CabinetGrotest-Bold", sans-serif;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 60px;
+.weather__info {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+  color: #fff;
+  font-size: 36px;
+}
+
+.weather__image {
+  width: 100%;
+}
+
+.main {
   padding: 0 20px;
-  font-family: "CabinetGrotesk", serif;
-  font-size: 20px;
-  line-height: 25px;
-  font-weight: 700;
 }
-
-.header__add-clothes-button {
-  font-family: "CabinetGrotesk", serif;
-  font-size: 20px;
-  line-height: 25px;
-  font-weight: 700;
-  background: none;
-  border: none;
-}
-.header__logo {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.header__avatar-logo {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-} */
