@@ -7,25 +7,23 @@ const weatherOptions = [
   { url: "/images/day/day_storm.svg", day: true, type: "storm" },
   { url: "/images/night/night_sunny.svg", day: false, type: "sunny" },
   { url: "/images/night/night_cloudy.svg", day: false, type: "cloudy" },
+  { url: "/images/night/night_rain.svg", day: false, type: "rain" },
+  { url: "/images/night/night_snow.svg", day: false, type: "snow" },
+  { url: "/images/night/night_fog.svg", day: false, type: "fog" },
+  { url: "/images/night/night_storm.svg", day: false, type: "storm" },
 ];
 
 const WeatherCard = ({ day, type }) => {
-  console.log("weather card");
   const imageSrc = weatherOptions.filter((i) => {
-    console.log(i);
     return i.day === day && i.type === type;
   });
 
-  console.log(imageSrc);
+  const imageSrcUrl = imageSrc[0].url || "";
 
   return (
     <section id="weather" className="weather">
       <div className="weather__info">99°F</div>
-      <img
-        src="images/day/day_sunny.svg"
-        alt="Weather"
-        className="weather__image"
-      />
+      <img src={imageSrcUrl} alt="Weather" className="weather__image" />
     </section>
   );
 };
