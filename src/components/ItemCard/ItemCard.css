@@ -1,0 +1,10 @@
+.clothing_cards__card_image {
+  width: 328px;
+  height: 328px;
+  border-radius: 10px;
+}
+
+.clothing__cards__card_name {
+  text-align: center;
+  font-family: "CabinetGrotesk-Bold";
+}

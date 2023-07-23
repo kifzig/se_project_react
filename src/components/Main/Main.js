@@ -1,6 +1,7 @@
 import WeatherCard from "../WeatherCard/WeatherCard.js";
 import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../util/constants";
+import "./Main.css";
 
 //const weatherTemp = "75° F";
 const Main = ({ weatherTemp }) => {

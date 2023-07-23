@@ -1,3 +1,5 @@
+import "./WeatherCard.css";
+
 const weatherOptions = [
   {
     url: require("../../images/day/day_sunny.svg").default,
