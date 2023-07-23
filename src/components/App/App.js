@@ -1,16 +1,17 @@
 // import logo from "../../logo.svg";
 import "./App.css";
-import Header from "../Header/Header.js";
-import WeatherCard from "../WeatherCard/WeatherCard.js";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+
+const weatherTemp = "75° F";
 
 function App() {
   return (
     <div>
       <Header />
-      <main className="main">
-        <WeatherCard day={false} type="rain" />
-        <section id="clothing-cards">Card Section</section>
-      </main>
+      <Main weatherTemp={weatherTemp} />
+      <Footer />
     </div>
   );
 }
