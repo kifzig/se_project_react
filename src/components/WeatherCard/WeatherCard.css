@@ -3,9 +3,10 @@
   font-family: "CabinetGrotest-Bold", sans-serif;
 }
 
+/* Check dimensions on Figma */
 .weather__info {
   position: absolute;
-  top: 20px;
+  top: 32px;
   left: 16px;
   color: #fff;
   font-size: 36px;
