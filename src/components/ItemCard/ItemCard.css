@@ -1,10 +1,28 @@
-.clothing_cards__card_image {
-  width: 328px;
-  height: 328px;
-  border-radius: 10px;
+.clothing_card {
+  position: relative;
+  border: 5px black;
+  display: flex;
+  justify-content: center;
 }
 
-.clothing__cards__card_name {
+.clothing_card__card_image {
+  width: 325px;
+  height: 328px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.clothing_card__card_name {
+  position: absolute;
+  top: 20px;
   text-align: center;
   font-family: "CabinetGrotesk-Bold";
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: #fff;
+  height: 24px;
+  width: 72px;
+  border-radius: 4px;
+  padding: 5px;
 }

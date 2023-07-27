@@ -8,14 +8,82 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(0, 0, 0, 0.5);
+  font-family: "CabinetGrotesk-Bold", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
 }
-
-/* Double check */
 
 .modal__content {
   background-color: #fff;
   max-width: 496px;
+  height: 436px;
   width: 100%;
   border-radius: 20px;
   padding: 34px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.modal__form_close_button {
+  position: absolute;
+  bottom: calc(100% - 50px);
+  left: calc(100% - 50px);
+  width: 20px;
+  height: 20px;
+  background-image: url("../../images/button_close.svg");
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  padding: 10px;
+}
+
+.modal__close_button:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.modal__input_wrapper {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.modal__label_input {
+  display: block;
+  /* margin-bottom: ; */
+}
+
+.modal__input {
+  border: none;
+  border-bottom: 1px solid #000;
+  /* max-width: 440px; */
+  width: 100%;
+  margin-top: 10px;
+}
+
+.modal__radio_option {
+  margin-bottom: 5px;
+}
+.modal__label_radio {
+  margin-left: 5px;
+}
+
+.modal__title {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.modal__submit_button {
+  margin-top: 20px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  height: 36px;
+  width: 124px;
+  border: none;
+}
+
+.modal__submit_button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: background-color 1s;
 }

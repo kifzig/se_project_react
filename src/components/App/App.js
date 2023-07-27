@@ -8,12 +8,14 @@ import ItemModal from "../ItemModal/ItemModal";
 import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
+import { getLocation } from "../../utils/WeatherApi";
+import { parseLocationData } from "../../utils/WeatherApi";
 
 function App() {
-  const weatherTemp = "75° F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
+  const [location, setLocation] = useState("");
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -30,39 +32,70 @@ function App() {
 
   useEffect(() => {
     getForecastWeather().then((data) => {
-      const celsiusTemperature = parseWeatherData(data);
-      const fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+      const fahrenheitTemperature = parseWeatherData(data);
 
       setTemp(fahrenheitTemperature);
     });
   }, []);
 
+  useEffect(() => {
+    getLocation().then((data) => {
+      const city = parseLocationData(data);
+      setLocation(city);
+    });
+  }, []);
+
   return (
     <div>
-      <Header onCreateModal={handleCreateModal} />
+      <Header onCreateModal={handleCreateModal} city={location} />
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title={"New Garment"} onClose={handleCloseModal}>
-          <label>
-            Name <input type="text" name="name" minLength="1" maxLength="30" />
-          </label>
-          <label>
-            Image <input type="url" name="link" minLength="1" maxLength="30" />
-          </label>
+        <ModalWithForm
+          title={"New Garment"}
+          onClose={handleCloseModal}
+          modalType={"add_garment"}
+          buttonText={"Add garment"}
+        >
+          <div className="modal__input_wrapper">
+            <label className="modal__label_input">
+              Name{" "}
+              <input
+                type="text"
+                name="name"
+                minLength="1"
+                maxLength="30"
+                placeholder="Name"
+                className="modal__input"
+              />
+            </label>
+          </div>
+          <div className="modal__input_wrapper">
+            <label className="modal__label_input">
+              Image{" "}
+              <input
+                type="url"
+                name="link"
+                minLength="1"
+                maxLength="30"
+                placeholder="Image URL"
+                className="modal__input"
+              />
+            </label>
+          </div>
           <p>Select the weather type:</p>
           <div>
-            <div>
+            <div className="modal__radio_option">
               <input type="radio" id="hot" value="hot" />
-              <label>Hot</label>
+              <label className="modal__label_radio">Hot</label>
             </div>
-            <div>
+            <div className="modal__radio_option">
               <input type="radio" id="warm" value="warm" />
-              <label>Warm</label>
+              <label className="modal__label_radio">Warm</label>
             </div>
-            <div>
+            <div className="modal__radio_option">
               <input type="radio" id="cold" value="cold" />
-              <label>Cold</label>
+              <label className="modal__label_radio">Cold</label>
             </div>
           </div>
         </ModalWithForm>
