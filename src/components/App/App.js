@@ -52,7 +52,7 @@ function App() {
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm
-          title={"New Garment"}
+          title={"New garment"}
           onClose={handleCloseModal}
           modalType={"add_garment"}
           buttonText={"Add garment"}
@@ -84,7 +84,7 @@ function App() {
             </label>
           </div>
           <p>Select the weather type:</p>
-          <div>
+          <div className="modal__radio_buttons">
             <div className="modal__radio_option">
               <input type="radio" id="hot" value="hot" name="temp_range" />
               <label className="modal__label_radio">Hot</label>

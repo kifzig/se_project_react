@@ -25,6 +25,11 @@
   position: relative;
 }
 
+.modal__title {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
 .modal__form_close_button {
   position: absolute;
   bottom: calc(100% - 50px);
@@ -43,16 +48,19 @@
   cursor: pointer;
 }
 
+.modal__form {
+  width: 100%;
+}
+
 .modal__input_wrapper {
+  width: 100%;
   display: flex;
   margin-bottom: 20px;
 }
 
 .modal__label_input {
-  display: block;
-  /* margin-bottom: ; */
+  width: 100%;
 }
-
 .modal__input {
   border: none;
   border-bottom: 1px solid #000;
@@ -61,16 +69,34 @@
   margin-top: 10px;
 }
 
-.modal__radio_option {
-  margin-bottom: 5px;
-}
-.modal__label_radio {
-  margin-left: 5px;
+.modal__radio_buttons {
+  margin-bottom: 10px;
+  appearance: none;
+  font-size: 16px;
 }
 
-.modal__title {
+.modal__radio_buttons label {
   font-size: 16px;
-  margin-bottom: 30px;
+  line-height: 20px;
+  color: gray;
+  margin-left: 5px;
+  padding: 5px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.modal__radio_buttons input[type="radio"] {
+  accent-color: #000;
+  margin-bottom: 5px;
+}
+
+.modal__radio_buttons input[type="radio"]:checked + label {
+  color: #000;
+}
+
+.modal__radio_buttons input[type="radio"]:checked::before {
+  background-color: #000;
+  border-radius: 50%;
 }
 
 .modal__submit_button {
