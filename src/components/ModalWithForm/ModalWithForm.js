@@ -26,18 +26,13 @@ const ModalWithForm = ({
 
   useEffect(() => {
     const handleClickClose = (evt) => {
-      if (
-        evt.target.classList.contains(".modal")
-
-        // &&
-        // !evt.target.classList.contains(".modal__content")
-      ) {
+      if (evt.target.classList.contains("modal")) {
+        console.log("handleClickClose");
         onClose();
       }
     };
 
-    const modal = document.querySelector(".modal");
-    modal.addEventListener("click", handleClickClose);
+    document.addEventListener("click", handleClickClose);
 
     return () => {
       document.removeEventListener("click", handleClickClose);
