@@ -8,25 +8,43 @@ const ModalWithForm = ({
   modalType,
   onClose,
 }) => {
-  console.log("ModalWithForm");
-
-  // function to check if key === ESC
-  /*
   useEffect(() => {
-    const handleEsc = (evt) => {
-      // handle the escape
+    const handleEscClose = (evt) => {
+      if (evt.key === "Escape") {
+        {
+          onClose();
+        }
+      }
     };
-    // Set event listener on the window or document
-    // window.addEventListener(keydown)
-    // event.key === "ESC code is"
 
-    // onClose could be used
+    document.addEventListener("keydown", handleEscClose);
 
     return () => {
-      // remove the event listener
+      document.removeEventListener("keydown", handleEscClose);
     };
   }, []);
-  */
+
+  useEffect(() => {
+    const handleClickClose = (evt) => {
+      if (
+        evt.target.classList.contains(".modal")
+
+        // &&
+        // !evt.target.classList.contains(".modal__content")
+      ) {
+        onClose();
+      }
+    };
+
+    const modal = document.querySelector(".modal");
+    modal.addEventListener("click", handleClickClose);
+
+    return () => {
+      document.removeEventListener("click", handleClickClose);
+    };
+  }, []);
+
+  // useEffect;
 
   return (
     <div className={`modal modal_type_${modalType}`}>
