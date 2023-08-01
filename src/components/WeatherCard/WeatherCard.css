@@ -6,7 +6,7 @@
 /* Check dimensions on Figma */
 .weather__info {
   position: absolute;
-  top: 32px;
+  top: 20px;
   left: 16px;
   color: #fff;
   font-size: 36px;
