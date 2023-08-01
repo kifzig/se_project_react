@@ -21,16 +21,17 @@ export const parseWeatherData = (data) => {
   return Math.ceil(temperature);
 };
 
+const processServerResponse = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
+};
+
 export const getLocation = () => {
   const geolocationApi = fetch(
     `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-  });
+  ).then(processServerResponse);
   return geolocationApi;
 };
 

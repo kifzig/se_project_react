@@ -1,4 +1,6 @@
 import "./Header.css";
+import avatarImage from "../../images/avatar.svg";
+import wtwrLogo from "../../images/logo.svg";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
@@ -10,7 +12,7 @@ const Header = ({ onCreateModal, city }) => {
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={require("../../images/logo.svg").default} alt="logo" />
+          <img src={wtwrLogo} alt="logo" />
         </div>
         <div>
           {currentDate}, {city}
@@ -28,7 +30,7 @@ const Header = ({ onCreateModal, city }) => {
         </div>
         <div>Name</div>
         <div>
-          <img src={require("../../images/avatar.svg").default} alt="logo" />
+          <img src={avatarImage} alt="logo" />
         </div>
       </div>
     </header>

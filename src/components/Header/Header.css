@@ -15,6 +15,11 @@
   font-size: 20px;
   background: none;
   border: none;
+  cursor: pointer;
+}
+
+.header__add-clothes-button:hover {
+  background: pink;
 }
 
 .header__logo {

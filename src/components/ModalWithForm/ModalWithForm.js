@@ -8,39 +8,6 @@ const ModalWithForm = ({
   modalType,
   onClose,
 }) => {
-  useEffect(() => {
-    const handleEscClose = (evt) => {
-      if (evt.key === "Escape") {
-        {
-          onClose();
-        }
-      }
-    };
-
-    document.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleClickClose = (evt) => {
-      if (evt.target.classList.contains("modal")) {
-        console.log("handleClickClose");
-        onClose();
-      }
-    };
-
-    document.addEventListener("click", handleClickClose);
-
-    return () => {
-      document.removeEventListener("click", handleClickClose);
-    };
-  }, []);
-
-  // useEffect;
-
   return (
     <div className={`modal modal_type_${modalType}`}>
       <div className="modal__content">

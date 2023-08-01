@@ -41,6 +41,7 @@
   background-color: transparent;
   background-repeat: no-repeat;
   padding: 10px;
+  cursor: pointer;
 }
 
 .modal__close_button:hover {
@@ -85,16 +86,16 @@
   cursor: pointer;
 }
 
-.modal__radio_buttons input[type="radio"] {
+.modal__radio_button {
   accent-color: #000;
   margin-bottom: 5px;
 }
 
-.modal__radio_buttons input[type="radio"]:checked + label {
+.modal__radio_button:checked + label {
   color: #000;
 }
 
-.modal__radio_buttons input[type="radio"]:checked::before {
+.modal__radio_button:checked::before {
   background-color: #000;
   border-radius: 50%;
 }
@@ -107,6 +108,7 @@
   height: 36px;
   width: 124px;
   border: none;
+  cursor: pointer;
 }
 
 .modal__submit_button:hover {

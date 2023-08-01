@@ -37,8 +37,68 @@ export const defaultClothingItems = [
   },
 ];
 
-// Call to API - request
-// https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}
+export const weatherOptions = [
+  {
+    url: require("../images/day/day_sunny.svg").default,
+    day: true,
+    type: "sunny",
+  },
+  {
+    url: require("../images/day/day_cloudy.svg").default,
+    day: true,
+    type: "cloudy",
+  },
+  {
+    url: require("../images/day/day_rain.svg").default,
+    day: true,
+    type: "rain",
+  },
+  {
+    url: require("../images/day/day_snow.svg").default,
+    day: true,
+    type: "snow",
+  },
+  {
+    url: require("../images/day/day_fog.svg").default,
+    day: true,
+    type: "fog",
+  },
+  {
+    url: require("../images/day/day_storm.svg").default,
+    day: true,
+    type: "storm",
+  },
+  {
+    url: require("../images/night/night_sunny.svg").default,
+    day: false,
+    type: "sunny",
+  },
+  {
+    url: require("../images/night/night_cloudy.svg").default,
+    day: false,
+    type: "cloudy",
+  },
+  {
+    url: require("../images/night/night_rain.svg").default,
+    day: false,
+    type: "rain",
+  },
+  {
+    url: require("../images/night/night_snow.svg").default,
+    day: false,
+    type: "snow",
+  },
+  {
+    url: require("../images/night/night_fog.svg").default,
+    day: false,
+    type: "fog",
+  },
+  {
+    url: require("../images/night/night_storm.svg").default,
+    day: false,
+    type: "storm",
+  },
+];
 
 export const apiKey = "bbae70ace6ed8532c54ba18f808ec957";
 export const latitude = 29.42;
