@@ -8,7 +8,6 @@ import ItemModal from "../ItemModal/ItemModal";
 import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
-import { getLocation } from "../../utils/WeatherApi";
 import { parseLocation } from "../../utils/WeatherApi";
 
 function App() {

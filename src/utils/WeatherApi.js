@@ -36,7 +36,7 @@ export const parseLocation = (data) => {
 //   return geolocationApi;
 // };
 
-export const parseLocationData = (data) => {
-  const name = data[0].name;
-  return name;
-};
+// export const parseLocationData = (data) => {
+//   const name = data[0].name;
+//   return name;
+// };
