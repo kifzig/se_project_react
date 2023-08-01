@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { getLocation } from "../../utils/WeatherApi";
-import { parseLocationData } from "../../utils/WeatherApi";
+import { parseLocation } from "../../utils/WeatherApi";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -67,20 +67,11 @@ function App() {
   useEffect(() => {
     getForecastWeather().then((data) => {
       const fahrenheitTemperature = parseWeatherData(data);
+      const city = parseLocation(data);
 
       setTemp(fahrenheitTemperature);
+      setLocation(city);
     });
-  }, []);
-
-  useEffect(() => {
-    getLocation()
-      .then((data) => {
-        const city = parseLocationData(data);
-        setLocation(city);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
   }, []);
 
   return (

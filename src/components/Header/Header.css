@@ -19,7 +19,7 @@
 }
 
 .header__add-clothes-button:hover {
-  background: pink;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .header__logo {

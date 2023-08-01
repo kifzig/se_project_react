@@ -44,6 +44,10 @@
   cursor: pointer;
 }
 
+.item_modal__close_button:hover {
+  color: #000;
+}
+
 .item_modal__caption {
   background-color: #fff;
   font-size: 20px;
