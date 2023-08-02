@@ -45,7 +45,6 @@
 }
 
 .item_modal__close_button:hover {
-  /* background-image: url("../../images/white_close_button.svg"); */
   transform: scale(2);
   cursor: pointer;
 }
