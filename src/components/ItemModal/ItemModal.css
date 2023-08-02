@@ -45,7 +45,9 @@
 }
 
 .item_modal__close_button:hover {
-  color: #000;
+  /* background-image: url("../../images/white_close_button.svg"); */
+  transform: scale(2);
+  cursor: pointer;
 }
 
 .item_modal__caption {

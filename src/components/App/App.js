@@ -64,13 +64,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const fahrenheitTemperature = parseWeatherData(data);
-      const city = parseLocation(data);
+    getForecastWeather()
+      .then((data) => {
+        const fahrenheitTemperature = parseWeatherData(data);
+        const city = parseLocation(data);
 
-      setTemp(fahrenheitTemperature);
-      setLocation(city);
-    });
+        setTemp(fahrenheitTemperature);
+        setLocation(city);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   return (

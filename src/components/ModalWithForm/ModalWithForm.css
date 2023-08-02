@@ -46,7 +46,8 @@
 
 .modal__form_close_button:hover {
   cursor: pointer;
-  background-image: url("../../images/close_button_hover.svg");
+  /* background-image: url("../../images/close_button_hover.svg"); */
+  transform: scale(2);
 }
 
 .modal__form {
