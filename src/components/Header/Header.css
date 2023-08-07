@@ -33,3 +33,22 @@
   gap: 20px;
   align-items: center;
 }
+
+@media all and (max-width: 660px) {
+  .clothing_card__card_image {
+    width: 164px;
+    height: 164px;
+    padding: 0px;
+  }
+
+  .clothing_card__card_name {
+    top: 7px;
+    height: 15px;
+    width: 50px;
+  }
+
+  .header__logo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

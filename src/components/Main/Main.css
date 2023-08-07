@@ -20,3 +20,13 @@
   font-weight: 700;
   font-size: 20px;
 }
+
+@media all and (max-width: 660px) {
+  .clothing__intro {
+    text-align: center;
+  }
+
+  /* .clothing__cards {
+    width: 164px;
+  } */
+}
