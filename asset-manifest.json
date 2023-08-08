@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/se_project_react/static/css/main.ab028492.css",
-    "main.js": "/se_project_react/static/js/main.a3757124.js",
+    "main.css": "/se_project_react/static/css/main.b1a78b8f.css",
+    "main.js": "/se_project_react/static/js/main.95dbf0ad.js",
     "static/js/787.79f92504.chunk.js": "/se_project_react/static/js/787.79f92504.chunk.js",
-    "static/media/avatar.svg": "/se_project_react/static/media/avatar.48a94cf7303039d50389774f82612063.svg",
     "static/media/CabinetGrotesk-Bold.woff": "/se_project_react/static/media/CabinetGrotesk-Bold.4e6ceb64c2d0c044d897.woff",
+    "static/media/avatar_kif.png": "/se_project_react/static/media/avatar_kif.24dbf9ec30f5a1abfe21.png",
     "static/media/day_snow.svg": "/se_project_react/static/media/day_snow.a5bb7441280cef64ae081acadb7d6e66.svg",
     "static/media/night_snow.svg": "/se_project_react/static/media/night_snow.20a89d711249712380ea9f4269b386a3.svg",
     "static/media/day_storm.svg": "/se_project_react/static/media/day_storm.51c68e175fd385c6055462b91d462bd5.svg",
@@ -19,14 +19,17 @@
     "static/media/button_close.svg": "/se_project_react/static/media/button_close.5041c8cbf1275be14ac1.svg",
     "index.html": "/se_project_react/index.html",
     "static/media/white_close_button.svg": "/se_project_react/static/media/white_close_button.34bff1eb1ed0331b4c52.svg",
+    "static/media/cloudy.svg": "/se_project_react/static/media/cloudy.730beae5d39ba0003ff641bc37f29f69.svg",
     "static/media/day_sunny.svg": "/se_project_react/static/media/day_sunny.1c3ffd02d92146a2673939be89b88d54.svg",
     "static/media/night_sunny.svg": "/se_project_react/static/media/night_sunny.ae0e6bbe1e0bfc883f3ba207396bf3b4.svg",
-    "main.ab028492.css.map": "/se_project_react/static/css/main.ab028492.css.map",
-    "main.a3757124.js.map": "/se_project_react/static/js/main.a3757124.js.map",
+    "static/media/moon.svg": "/se_project_react/static/media/moon.b25b1fc312c0c57d6ef221c5cf49af46.svg",
+    "static/media/sun.svg": "/se_project_react/static/media/sun.d13a8fcdb119dc3fe6a09ed116ba29c4.svg",
+    "main.b1a78b8f.css.map": "/se_project_react/static/css/main.b1a78b8f.css.map",
+    "main.95dbf0ad.js.map": "/se_project_react/static/js/main.95dbf0ad.js.map",
     "787.79f92504.chunk.js.map": "/se_project_react/static/js/787.79f92504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab028492.css",
-    "static/js/main.a3757124.js"
+    "static/css/main.b1a78b8f.css",
+    "static/js/main.95dbf0ad.js"
   ]
 }
