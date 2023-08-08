@@ -37,6 +37,33 @@ export const defaultClothingItems = [
   },
 ];
 
+export const weatherBackgrounds = [
+  {
+    url: require("../images/day/sun.svg").default,
+    background_color: "#00A3FF",
+    day: true,
+    type: "sunny",
+  },
+  {
+    url: require("../images/day/cloudy.svg").default,
+    background_color: "#00A3FF",
+    day: true,
+    type: "cloudy",
+  },
+  {
+    url: require("../images/night/moon.svg").default,
+    background_color: "#286897",
+    day: false,
+    type: "sunny",
+  },
+  {
+    url: require("../images/night/cloudy.svg").default,
+    background_color: "#286897",
+    day: false,
+    type: "cloudy",
+  },
+];
+
 export const weatherOptions = [
   {
     url: require("../images/day/day_sunny.svg").default,

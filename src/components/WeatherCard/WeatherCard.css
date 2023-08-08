@@ -3,13 +3,28 @@
   font-family: "CabinetGrotest-Bold", sans-serif;
 }
 
+.weather__bar {
+  position: relative;
+  background-color: gray;
+  height: 80px;
+  width: 100%;
+  border-radius: 12px;
+}
 /* Check dimensions on Figma */
-.weather__info {
+.weather__temp {
   position: absolute;
   top: 20px;
   left: 16px;
   color: #fff;
   font-size: 36px;
+}
+
+.weather__icons {
+  top: 0;
+  right: 0;
+  position: absolute;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .weather__image {
@@ -18,33 +33,19 @@
 }
 
 @media all and (max-width: 1015px) {
-  .weather__info {
-    font-size: 20px;
-    top: 15px;
-  }
-
   .weather__image {
     height: 80px;
   }
 }
 
 @media all and (max-width: 660px) {
-  .weather__info {
-    font-size: 15px;
-    top: 13px;
-  }
-
   .weather__image {
     height: 80px;
   }
 }
 
 @media all and (max-width: 450px) {
-  .weather__info {
-    top: 3px;
-  }
-
   .weather__image {
-    height: 80px;
+    min-height: 80px;
   }
 }

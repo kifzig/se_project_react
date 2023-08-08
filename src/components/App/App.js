@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation } from "../../utils/WeatherApi";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -79,6 +80,7 @@ function App() {
 
   return (
     <div>
+      {/* <CurrentTemperatureUnitContext.Provider> */}
       <Header onCreateModal={handleCreateModal} city={location} />
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
@@ -153,6 +155,7 @@ function App() {
       {activeModal === "preview" && (
         <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
       )}
+      {/* </CurrentTemperatureUnitContext.Provider> */}
     </div>
   );
 }

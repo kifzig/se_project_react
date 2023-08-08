@@ -22,13 +22,13 @@ const Main = ({ weatherTemp, onSelectCard }) => {
 
   return (
     <main className="main">
-      <WeatherCard day={true} type="sunny" weatherTemp={weatherTemp} />
+      <WeatherCard day={false} type="cloudy" weatherTemp={weatherTemp} />
       <section id="clothing-section" className="clothing">
         <div className="clothing__intro">
           Today is {weatherTemp}° F / You may want to wear:
         </div>
         <div className="clothing__cards">
-          {filteredCards.map((item, index) => (
+          {filteredCards.map((item) => (
             <ItemCard item={item} onSelectCard={onSelectCard} key={item._id} />
           ))}
         </div>
