@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useContext, useEffect } from "react";
 import "./ToggleSwitch.css";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
@@ -9,31 +10,32 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
  */
 
 const ToggleSwitch = () => {
-  const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
-    CurrentTemperatureUnitContext
-  );
+  console.log("Toggle ");
+  return <div>Toggle Switch</div>;
 
-  const [isChecked, setIsChecked] = useState(currentTemperatureUnit === "C");
-  useEffect(
-    () => setIsChecked(currrentTemperatureUnit === "C"),
-    [currentTemperatureUnit]
-  );
-
-  return (
-    <div className="toggle-switch">
-      <label className="toggle-switch__label">
-        <input
-          className="toggle-switch_checkbox toggle-switch__checkbox_state_hidden"
-          type="checkbox"
-          name="toggle-switch-checkbox"
-          value={currentTemperatureUnit}
-          onChange={handleToggleSwitchChange}
-          checked={isChecked}
-        />
-        <span className="toggle-switch__checkbox toggle-switch__checkbox_state_visible" />
-      </label>
-    </div>
-  );
+  //   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
+  //     CurrentTemperatureUnitContext
+  //   );
+  //   const [isChecked, setIsChecked] = useState(currentTemperatureUnit === "C");
+  //   useEffect(
+  //     () => setIsChecked(currrentTemperatureUnit === "C"),
+  //     [currentTemperatureUnit]
+  //   );
+  //   return (
+  //     <div className="toggle-switch">
+  //       <label className="toggle-switch__label">
+  //         <input
+  //           className="toggle-switch_checkbox toggle-switch__checkbox_state_hidden"
+  //           type="checkbox"
+  //           name="toggle-switch-checkbox"
+  //           value={currentTemperatureUnit}
+  //           onChange={handleToggleSwitchChange}
+  //           checked={isChecked}
+  //         />
+  //         <span className="toggle-switch__checkbox toggle-switch__checkbox_state_visible" />
+  //       </label>
+  //     </div>
+  //   );
 };
 
 export default ToggleSwitch;
