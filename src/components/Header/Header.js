@@ -1,5 +1,5 @@
 import "./Header.css";
-import avatarImage from "../../images/avatar.svg";
+import avatarImage from "../../images/avatar_kif.png";
 import wtwrLogo from "../../images/logo.svg";
 
 const currentDate = new Date().toLocaleString("default", {
@@ -28,9 +28,9 @@ const Header = ({ onCreateModal, city }) => {
             + Add New Clothes
           </button>
         </div>
-        <div>Francis</div>
+        <div>Kif Francis</div>
         <div>
-          <img src={avatarImage} alt="logo" />
+          <img src={avatarImage} alt="logo" className="header__avatar-image" />
         </div>
       </div>
     </header>
