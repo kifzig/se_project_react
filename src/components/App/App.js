@@ -8,7 +8,8 @@ import ItemModal from "../ItemModal/ItemModal";
 import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
-import { parseLocation } from "../../utils/WeatherApi";
+import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
+
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [location, setLocation] = useState("");
+  const [isDay, setDayOrNight] = useState(true);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -69,9 +71,11 @@ function App() {
       .then((data) => {
         const fahrenheitTemperature = parseWeatherData(data);
         const city = parseLocation(data);
+        const isDaytime = parseDaytime(data);
 
         setTemp(fahrenheitTemperature);
         setLocation(city);
+        setDayOrNight(isDaytime);
       })
       .catch((err) => {
         console.error(err);
@@ -82,7 +86,11 @@ function App() {
     <div>
       {/* <CurrentTemperatureUnitContext.Provider> */}
       <Header onCreateModal={handleCreateModal} city={location} />
-      <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+      <Main
+        weatherTemp={temp}
+        onSelectCard={handleSelectedCard}
+        dayOrNight={isDay}
+      />
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm

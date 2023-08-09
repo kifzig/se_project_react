@@ -24,7 +24,16 @@ export const parseWeatherData = (data) => {
 
 export const parseLocation = (data) => {
   const city = data.name;
+
   return city;
+};
+
+export const parseDaytime = (data) => {
+  const sunset = data.sys.sunset;
+  const currentTime = Math.floor(Date.now() / 1000);
+  if (currentTime < sunset) {
+    return true;
+  } else return false;
 };
 
 // Location via the weather will be depcrecated in the future--this is the recommended way when

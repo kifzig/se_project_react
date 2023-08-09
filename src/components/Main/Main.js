@@ -3,7 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/constants.js";
 import "./Main.css";
 
-const Main = ({ weatherTemp, onSelectCard }) => {
+const Main = ({ weatherTemp, onSelectCard, dayOrNight }) => {
   const getWeatherType = (temperature) => {
     if (temperature >= 86) {
       return "hot";
@@ -22,7 +22,7 @@ const Main = ({ weatherTemp, onSelectCard }) => {
 
   return (
     <main className="main">
-      <WeatherCard day={false} type="cloudy" weatherTemp={weatherTemp} />
+      <WeatherCard day={dayOrNight} type="cloudy" weatherTemp={weatherTemp} />
       <section id="clothing-section" className="clothing">
         <div className="clothing__intro">
           Today is {weatherTemp}° F / You may want to wear:

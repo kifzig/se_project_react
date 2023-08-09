@@ -14,8 +14,6 @@ const WeatherCard = ({ day, type, weatherTemp = "" }) => {
     ? weatherBackground.background_color || ""
     : "";
 
-  console.log(weatherBackgroundColor);
-
   return (
     <section id="weather" className="weather">
       <div
