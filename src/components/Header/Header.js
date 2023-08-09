@@ -14,7 +14,7 @@ const Header = ({ onCreateModal, city }) => {
     <header className="header">
       <div className="header__logo">
         <div>
-          <Link to="/">
+          <Link to="/" className="header__logo-image">
             <img src={wtwrLogo} alt="logo" />
           </Link>
         </div>

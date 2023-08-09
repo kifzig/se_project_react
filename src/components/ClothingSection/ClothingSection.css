@@ -1,0 +1,31 @@
+.clothingsection {
+  display: flex;
+  flex: 1 0 auto;
+  font-size: 20px;
+}
+
+.clothingsection__headings {
+  margin-top: 21px;
+}
+
+.clothingsection__title {
+  font-size: 20px;
+}
+
+.clothingsection__add_new {
+  color: rgb(0, 0, 0, 0.6);
+  cursor: pointer;
+  margin-left: 13px;
+}
+
+.clothingsection__cards {
+  max-width: 1015px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.clothingsection__card {
+  width: 325px;
+}

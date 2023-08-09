@@ -28,6 +28,14 @@
   align-items: center;
 }
 
+.header__logo-image {
+  cursor: pointer;
+}
+
+.header__logo-image:hover {
+  fill: rgb(0, 0, 0, 0.5);
+}
+
 .header__avatar-logo {
   display: flex;
   gap: 20px;

@@ -1,7 +1,7 @@
 {
   "name": "se_project_react",
   "version": "0.1.0",
-  "homepage": "https://kifzig.github.io/se_project_react",
+  "homepage": "https://kifzig.github.io/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

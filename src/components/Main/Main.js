@@ -12,7 +12,6 @@ const Main = ({ weatherTemp, onSelectCard, dayOrNight }) => {
     if (currentTemperatureUnit === "C") {
       temp = (temp * 9) / 5 + 32;
     }
-    console.log(temp);
     if (temp >= 86) {
       return "hot";
     } else if (temp >= 66 && temp <= 85) {
