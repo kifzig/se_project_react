@@ -22,7 +22,7 @@ const Main = ({ weatherTemp, onSelectCard, dayOrNight }) => {
     }
   };
 
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || "";
 
   const weatherType = getWeatherType(temp);
 
