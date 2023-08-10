@@ -19,6 +19,11 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     setWeather(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddItem({ name, imageUrl, weather });
+  };
+
   return (
     <ModalWithForm
       title={"New garment"}
@@ -26,7 +31,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
       modalType={"add_garment"}
       buttonText={"Add garment"}
       isOpen={isOpen}
-      onSubmit={(e) => onAddItem(e, { name, imageUrl, weather })}
+      onSubmit={handleSubmit}
     >
       <div className="modal__input_wrapper">
         <label className="modal__label_input">

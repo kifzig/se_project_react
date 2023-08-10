@@ -12,6 +12,7 @@ import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
 import { Switch, Route } from "react-router-dom";
+import { getClothingItems } from "../../utils/Api";
 
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
@@ -41,10 +42,20 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const onAddItem = (e, values) => {
-    e.preventDefault();
+  const handleAddItemSubmit = (values) => {
     console.log(values);
+    //pass values to API
   };
+
+  useEffect(() => {
+    getClothingItems()
+      .then((data) => {
+        const clothingArray = data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   useEffect(() => {
     const handleEscClose = (evt) => {
@@ -118,7 +129,7 @@ function App() {
           <AddItemModal
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
-            onAddItem={onAddItem}
+            onAddItem={handleAddItemSubmit}
           />
         )}
         {activeModal === "preview" && (
