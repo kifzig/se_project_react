@@ -1,8 +1,11 @@
 import "./WeatherCard.css";
 // import { weatherOptions } from "../../utils/constants.js";
 import { weatherBackgrounds } from "../../utils/constants.js";
+import { useContext } from "react";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 
 const WeatherCard = ({ day, type, weatherTemp = "" }) => {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const weatherBackground = weatherBackgrounds.find((background) => {
     return background.day === day && background.type === type;
   });
@@ -14,15 +17,15 @@ const WeatherCard = ({ day, type, weatherTemp = "" }) => {
     ? weatherBackground.background_color || ""
     : "";
 
-  console.log(weatherBackgroundColor);
-
   return (
     <section id="weather" className="weather">
       <div
         className="weather__bar"
         style={{ backgroundColor: weatherBackgroundColor }}
       >
-        <div className="weather__temp">{weatherTemp}° F</div>
+        <div className="weather__temp">
+          {weatherTemp}° {currentTemperatureUnit}
+        </div>
         <img
           src={weatherBackgroundUrl}
           alt="Weather"

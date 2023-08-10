@@ -19,13 +19,31 @@ export const getForecastWeather = () => {
 export const parseWeatherData = (data) => {
   const main = data.main;
   const temperature = main && main.temp;
-  return Math.ceil(temperature);
+  const weather = {
+    temperature: {
+      F: Math.round(temperature),
+      C: Math.round(((temperature - 32) * 5) / 9),
+    },
+  };
+  return weather;
 };
 
 export const parseLocation = (data) => {
   const city = data.name;
+
   return city;
 };
+
+export const parseDaytime = (data) => {
+  const sunset = data.sys.sunset;
+  const currentTime = Math.floor(Date.now() / 1000);
+  if (currentTime < sunset) {
+    return true;
+  } else return false;
+};
+
+// weather.temperature.F = `${Math.round(data.main.temp)}°F`;
+// weather.temperature.C = `${Math.round((data.main.temp - 32) * 5/9)}°C`;
 
 // Location via the weather will be depcrecated in the future--this is the recommended way when
 // it stops working
