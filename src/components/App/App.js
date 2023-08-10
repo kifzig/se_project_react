@@ -41,8 +41,10 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const handleAddItem = (e) => {
+  const onAddItem = (e, values) => {
+    e.preventDefault();
     console.log(e);
+    console.log(values);
   };
 
   useEffect(() => {
@@ -117,7 +119,7 @@ function App() {
           <AddItemModal
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
-            onAddItem={handleAddItem}
+            onAddItem={onAddItem}
           />
         )}
         {activeModal === "preview" && (
