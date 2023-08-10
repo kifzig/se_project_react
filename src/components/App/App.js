@@ -43,7 +43,6 @@ function App() {
 
   const onAddItem = (e, values) => {
     e.preventDefault();
-    console.log(e);
     console.log(values);
   };
 

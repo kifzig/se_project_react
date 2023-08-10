@@ -5,9 +5,18 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const [name, setName] = useState("");
 
   const handleNameChange = (e) => {
-    console.log(e.target.value);
     setName(e.target.value);
     //setName()
+  };
+
+  const [imageUrl, setUrl] = useState("");
+  const handleUrlChange = (e) => {
+    setUrl(e.target.value);
+  };
+
+  const [weather, setWeather] = useState("");
+  const handleWeatherChange = (e) => {
+    setWeather(e.target.value);
   };
 
   return (
@@ -17,7 +26,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
       modalType={"add_garment"}
       buttonText={"Add garment"}
       isOpen={isOpen}
-      onSubmit={(e) => onAddItem(e, { name })}
+      onSubmit={(e) => onAddItem(e, { name, imageUrl, weather })}
     >
       <div className="modal__input_wrapper">
         <label className="modal__label_input">
@@ -44,6 +53,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             maxLength="30"
             placeholder="Image URL"
             className="modal__input"
+            value={imageUrl}
+            onChange={handleUrlChange}
           />
         </label>
       </div>
@@ -56,6 +67,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             value="hot"
             name="temp_range"
             className="modal__radio_button"
+            onChange={handleWeatherChange}
           />
           <label className="modal__label_radio">Hot</label>
         </div>
@@ -66,6 +78,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             value="warm"
             name="temp_range"
             className="modal__radio_button"
+            onChange={handleWeatherChange}
           />
           <label className="modal__label_radio">Warm</label>
         </div>
@@ -76,6 +89,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             value="cold"
             name="temp_range"
             className="modal__radio_button"
+            onChange={handleWeatherChange}
           />
           <label className="modal__label_radio">Cold</label>
         </div>
