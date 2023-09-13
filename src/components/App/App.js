@@ -3,7 +3,6 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
@@ -12,7 +11,7 @@ import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
 import { Switch, Route } from "react-router-dom";
-import { getClothingItems } from "../../utils/Api";
+import { getClothingItems, deleteClothingItem } from "../../utils/Api";
 
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
@@ -23,6 +22,7 @@ function App() {
   const [location, setLocation] = useState("");
   const [isDay, setDayOrNight] = useState(true);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingArray, setClothingArray] = useState([]);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -44,13 +44,27 @@ function App() {
 
   const handleAddItemSubmit = (values) => {
     console.log(values);
-    //pass values to API
+  };
+
+  const handleDeleteItem = (values) => {
+    console.log(values);
+    deleteClothingItem(values.id)
+      .then((data) => {
+        console.log(data);
+        // If it's 200 then filter out the one deleted from the data
+        // Use a .filter !== id, then
+        // Use setClothingArray with array without the item deleted
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   useEffect(() => {
     getClothingItems()
       .then((data) => {
         const clothingArray = data;
+        setClothingArray(clothingArray);
       })
       .catch((err) => {
         console.error(err);
@@ -114,13 +128,17 @@ function App() {
         <Header onCreateModal={handleCreateModal} city={location} />
         <Switch>
           <Route path="/profile">
-            <Profile onSelectCard={handleSelectedCard}></Profile>
+            <Profile
+              onSelectCard={handleSelectedCard}
+              clothingArr={clothingArray}
+            ></Profile>
           </Route>
           <Route exact path="/">
             <Main
               weatherTemp={temp}
               onSelectCard={handleSelectedCard}
               dayOrNight={isDay}
+              clothingArr={clothingArray}
             />
           </Route>
         </Switch>
@@ -133,7 +151,11 @@ function App() {
           />
         )}
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            onDeleteItem={handleDeleteItem}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>

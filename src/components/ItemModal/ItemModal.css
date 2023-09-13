@@ -57,6 +57,8 @@
   padding: 20px;
   box-sizing: border-box;
   border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .item_modal__caption_name {
@@ -66,4 +68,18 @@
 
 .item_modal__caption_weather {
   color: #000;
+}
+
+.item_modal__delete_item {
+  color: #ff4d00;
+  cursor: pointer;
+}
+
+.item_modal__delete-clothing-button {
+  font-family: "CabinetGrotesk-Bold", serif;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: #ff4d00;
+  cursor: pointer;
 }

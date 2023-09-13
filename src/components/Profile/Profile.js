@@ -7,7 +7,7 @@ import "./Profile.css";
 // Sidebar
 // ClothesSection
 
-const Profile = ({ onSelectCard }) => {
+const Profile = ({ onSelectCard, clothingArr }) => {
   return (
     <div className="profile">
       <div className="profile__heading">
@@ -25,6 +25,7 @@ const Profile = ({ onSelectCard }) => {
         <Sidebar />
         <ClothingSection
           onSelectCard={onSelectCard}
+          clothingArr={clothingArr}
           className="clothingsection"
         />
       </div>

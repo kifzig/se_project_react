@@ -7,7 +7,16 @@ const processServerResponse = (res) => {
   return Promise.reject(`Error: ${res.status}`);
 };
 
+// Get all items
 export const getClothingItems = () => {
   const clothingApi = fetch(`${baseUrl}/items`).then(processServerResponse);
   return clothingApi;
+};
+
+// Delete an item
+export const deleteClothingItem = (id) => {
+  fetch(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  }).then(processServerResponse);
 };

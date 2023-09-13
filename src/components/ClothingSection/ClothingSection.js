@@ -3,7 +3,7 @@ import "./ClothingSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/constants.js";
 
-const ClothingSection = ({ onSelectCard }) => {
+const ClothingSection = ({ onSelectCard, clothingArr }) => {
   return (
     <section className="clothingsection">
       {/* <div className="clothingsection__headings">
@@ -12,11 +12,11 @@ const ClothingSection = ({ onSelectCard }) => {
       </div> */}
 
       <div className="clothingsection__cards">
-        {defaultClothingItems.map((item) => (
+        {clothingArr.map((item) => (
           <ItemCard
             item={item}
             onSelectCard={onSelectCard}
-            key={item._id}
+            key={item.id}
             className="clothingsection__card"
           />
         ))}
