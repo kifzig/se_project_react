@@ -1,10 +1,10 @@
 import React from "react";
-import Sidebar from "../Sidebar/Sidebar";
+import SideBar from "../SideBar/SideBar";
 import ClothingSection from "../ClothingSection/ClothingSection";
 import avatarImage from "../../images/avatar_kif.png";
 import "./Profile.css";
 
-// Sidebar
+// SideBar
 // ClothesSection
 
 const Profile = ({ onSelectCard, clothingArr }) => {
@@ -22,7 +22,7 @@ const Profile = ({ onSelectCard, clothingArr }) => {
       </div>
 
       <div className="profile__content">
-        <Sidebar />
+        <SideBar />
         <ClothingSection
           onSelectCard={onSelectCard}
           clothingArr={clothingArr}
@@ -34,25 +34,3 @@ const Profile = ({ onSelectCard, clothingArr }) => {
 };
 
 export default Profile;
-
-/*
-
-    <div className="profile">
-      <div className="profile__heading">
-        <div className="profile__heading_user">
-          <img src={avatarImage} alt="logo" className="profile__avatar-image" />
-          <div className="profile__profile_name">Kif Francis</div>
-        </div>
-        <div className="profile__heading_clothes">
-          <div className="profile__title">Your items</div>
-          <div className="profile__add_new">+ Add new</div>
-      </div>
-      </div>
-
-      </div>
-      <></>
-        <Sidebar>Sidebar</Sidebar>
-        <ClothingSection onSelectCard={onSelectCard}>ClothingSection</ClothingSection>
-</>>
-
-*/
