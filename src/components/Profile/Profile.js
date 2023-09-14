@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../SideBar/SideBar";
-import ClothingSection from "../ClothingSection/ClothingSection";
+import ClothesSection from "../ClothesSection/ClothesSection";
 import avatarImage from "../../images/avatar_kif.png";
 import "./Profile.css";
 
@@ -23,7 +23,7 @@ const Profile = ({ onSelectCard, clothingArr }) => {
 
       <div className="profile__content">
         <SideBar />
-        <ClothingSection
+        <ClothesSection
           onSelectCard={onSelectCard}
           clothingArr={clothingArr}
           className="clothingsection"
