@@ -11,7 +11,11 @@ import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
 import { Switch, Route } from "react-router-dom";
-import { getClothingItems, deleteClothingItem } from "../../utils/Api";
+import {
+  getClothingItems,
+  deleteClothingItem,
+  addClothingItem,
+} from "../../utils/Api";
 
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
@@ -44,6 +48,14 @@ function App() {
 
   const handleAddItemSubmit = (values) => {
     console.log(values);
+    addClothingItem(values.name, values.imageUrl, values.weather).then(
+      (data) => {
+        clothingArray.push(data);
+        console.log(clothingArray);
+        setClothingArray(clothingArray);
+      }
+    );
+    handleCloseModal();
   };
 
   const handleDeleteItem = (values) => {

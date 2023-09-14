@@ -20,3 +20,16 @@ export const deleteClothingItem = (id) => {
     headers: { "Content-Type": "application/json" },
   }).then(processServerResponse);
 };
+
+// Add an item
+export const addClothingItem = (clothingName, imageLoc, weatherType) => {
+  return fetch(`${baseUrl}/items/`, {
+    method: "POST",
+    body: JSON.stringify({
+      name: clothingName,
+      imageUrl: imageLoc,
+      weather: weatherType,
+    }),
+    headers: { "Content-Type": "application/json" },
+  }).then(processServerResponse);
+};
