@@ -50,10 +50,12 @@ function App() {
     console.log(values);
     deleteClothingItem(values.id)
       .then((data) => {
-        console.log(data);
-        // If it's 200 then filter out the one deleted from the data
-        // Use a .filter !== id, then
-        // Use setClothingArray with array without the item deleted
+        const idToDelete = values.id;
+        const updatedArray = clothingArray.filter((item) => {
+          return item.id !== idToDelete;
+        });
+        setClothingArray(updatedArray);
+        handleCloseModal();
       })
       .catch((err) => {
         console.error(err);
