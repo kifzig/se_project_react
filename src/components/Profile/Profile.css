@@ -46,6 +46,17 @@
   margin-left: 13px;
 }
 
+.profile__add-clothes-button {
+  font-family: "CabinetGrotesk-Bold", serif;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.profile__add-clothes-button:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
 .profile__content {
   display: flex;
 }

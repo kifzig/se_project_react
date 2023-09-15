@@ -83,3 +83,7 @@
   color: #ff4d00;
   cursor: pointer;
 }
+
+.item_modal__delete-clothing-button:hover {
+  color: rgba(255, 77, 0, 0.6);
+}

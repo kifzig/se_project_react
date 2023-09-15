@@ -50,12 +50,11 @@ function App() {
     console.log(values);
     addClothingItem(values.name, values.imageUrl, values.weather).then(
       (data) => {
-        clothingArray.push(data);
-        console.log(clothingArray);
+        clothingArray.unshift(data);
+        handleCloseModal();
         setClothingArray(clothingArray);
       }
     );
-    handleCloseModal();
   };
 
   const handleDeleteItem = (values) => {
@@ -145,6 +144,7 @@ function App() {
             <Profile
               onSelectCard={handleSelectedCard}
               clothingArr={clothingArray}
+              onCreateModal={handleCreateModal}
             ></Profile>
           </Route>
           <Route exact path="/">

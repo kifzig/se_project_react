@@ -1,6 +1,6 @@
 const baseUrl = "https://my-json-server.typicode.com/kifzig/se_project_react";
 
-const processServerResponse = (res) => {
+export const processServerResponse = (res) => {
   if (res.ok) {
     return res.json();
   }

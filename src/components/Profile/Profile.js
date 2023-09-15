@@ -8,7 +8,7 @@ import SideBar from "../SideBar/SideBar.js";
 // SideBar
 // ClothesSection
 
-const Profile = ({ onSelectCard, clothingArr }) => {
+const Profile = ({ onSelectCard, clothingArr, onCreateModal }) => {
   return (
     <div className="profile">
       <div className="profile__heading">
@@ -18,7 +18,15 @@ const Profile = ({ onSelectCard, clothingArr }) => {
         </div>
         <div className="profile__heading_clothes">
           <div className="profile__title">Your items</div>
-          <div className="profile__add_new">+ Add new</div>
+          <div className="profile__add_new">
+            <button
+              type="text"
+              className="profile__add-clothes-button"
+              onClick={onCreateModal}
+            >
+              + Add new
+            </button>
+          </div>
         </div>
       </div>
 
