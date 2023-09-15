@@ -48,13 +48,16 @@ function App() {
 
   const handleAddItemSubmit = (values) => {
     console.log(values);
-    addClothingItem(values.name, values.imageUrl, values.weather).then(
-      (data) => {
-        clothingArray.unshift(data);
+    addClothingItem(values.name, values.imageUrl, values.weather)
+      .then((data) => {
+        const newClothing = [data, ...clothingArray];
+
         handleCloseModal();
-        setClothingArray(clothingArray);
-      }
-    );
+        setClothingArray(newClothing);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleDeleteItem = (values) => {
@@ -134,45 +137,43 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <Header onCreateModal={handleCreateModal} city={location} />
-        <Switch>
-          <Route path="/profile">
-            <Profile
-              onSelectCard={handleSelectedCard}
-              clothingArr={clothingArray}
-              onCreateModal={handleCreateModal}
-            ></Profile>
-          </Route>
-          <Route exact path="/">
-            <Main
-              weatherTemp={temp}
-              onSelectCard={handleSelectedCard}
-              dayOrNight={isDay}
-              clothingArr={clothingArray}
-            />
-          </Route>
-        </Switch>
-        <Footer />
-        {activeModal === "create" && (
-          <AddItemModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "create"}
-            onAddItem={handleAddItemSubmit}
+    <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+    >
+      <Header onCreateModal={handleCreateModal} city={location} />
+      <Switch>
+        <Route path="/profile">
+          <Profile
+            onSelectCard={handleSelectedCard}
+            clothingArr={clothingArray}
+            onCreateModal={handleCreateModal}
+          ></Profile>
+        </Route>
+        <Route exact path="/">
+          <Main
+            weatherTemp={temp}
+            onSelectCard={handleSelectedCard}
+            dayOrNight={isDay}
+            clothingArr={clothingArray}
           />
-        )}
-        {activeModal === "preview" && (
-          <ItemModal
-            selectedCard={selectedCard}
-            onClose={handleCloseModal}
-            onDeleteItem={handleDeleteItem}
-          />
-        )}
-      </CurrentTemperatureUnitContext.Provider>
-    </div>
+        </Route>
+      </Switch>
+      <Footer />
+      {activeModal === "create" && (
+        <AddItemModal
+          handleCloseModal={handleCloseModal}
+          isOpen={activeModal === "create"}
+          onAddItem={handleAddItemSubmit}
+        />
+      )}
+      {activeModal === "preview" && (
+        <ItemModal
+          selectedCard={selectedCard}
+          onClose={handleCloseModal}
+          onDeleteItem={handleDeleteItem}
+        />
+      )}
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 

@@ -5,12 +5,12 @@ const ItemCard = ({ item, onSelectCard }) => {
     <div className="clothing_card">
       <img
         src={item.imageUrl}
-        alt="clothing icon"
+        alt={item.name}
         className="clothing_card__card_image"
         onClick={() => onSelectCard(item)}
       />
 
-      <div className="clothing_card__card_name">{item.name}</div>
+      <p className="clothing_card__card_name">{item.name}</p>
     </div>
   );
 };

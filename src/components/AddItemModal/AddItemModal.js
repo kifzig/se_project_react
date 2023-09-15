@@ -69,6 +69,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           <input
             type="radio"
             id="hot"
+            htmlFor="hot"
             value="hot"
             name="temp_range"
             className="modal__radio_button"
@@ -80,6 +81,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           <input
             type="radio"
             id="warm"
+            htmlFor="warm"
             value="warm"
             name="temp_range"
             className="modal__radio_button"
@@ -91,6 +93,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           <input
             type="radio"
             id="cold"
+            htmlFor="cold"
             value="cold"
             name="temp_range"
             className="modal__radio_button"
