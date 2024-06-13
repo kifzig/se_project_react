@@ -5,6 +5,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import LoginModal from "../LoginModal/LoginModal";
 import ItemModal from "../ItemModal/ItemModal";
 import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
@@ -30,6 +31,10 @@ function App() {
 
   const handleCreateModal = () => {
     setActiveModal("create");
+  };
+
+  const handleLoginModal = () => {
+    setActiveModal("login");
   };
 
   const handleCloseModal = () => {
@@ -171,6 +176,13 @@ function App() {
           selectedCard={selectedCard}
           onClose={handleCloseModal}
           onDeleteItem={handleDeleteItem}
+        />
+      )}
+      {activeModal === "login" && (
+        <LoginModal
+          handleCloseModal={handleCloseModal}
+          isOpen={activeModal === "login"}
+          onAddItem={handleAddItemSubmit} // This needs to be changed
         />
       )}
     </CurrentTemperatureUnitContext.Provider>

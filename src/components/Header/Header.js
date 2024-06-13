@@ -33,12 +33,15 @@ const Header = ({ onCreateModal, city }) => {
             + Add New Clothes
           </button>
         </div>
-        <Link to="/profile" className="header__profile-link">
+        <div>Sign Up</div>
+        <div>Log In</div>
+        // Previous Code
+        {/* <Link to="/profile" className="header__profile-link">
           <div>Kif Francis</div>
         </Link>
         <div>
           <img src={avatarImage} alt="logo" className="header__avatar-image" />
-        </div>
+        </div> */}
       </div>
     </header>
   );

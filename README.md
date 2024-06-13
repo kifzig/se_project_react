@@ -9,3 +9,5 @@ This project is in its beginning stages. It has the ability to add and delete it
 ## View the Deployed Project
 
 [Deployed Site](https://kifzig.github.io/se_project_react)
+
+"bin\mongod.exe" --dbpath="c:\data\db"
