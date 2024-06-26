@@ -9,7 +9,7 @@ const currentDate = new Date().toLocaleString("default", {
   day: "numeric",
 });
 
-const Header = ({ onCreateModal, city }) => {
+const Header = ({ onCreateModal, onLoginClick, onRegisterClick, city }) => {
   return (
     <header className="header">
       <div className="header__logo">
@@ -33,15 +33,31 @@ const Header = ({ onCreateModal, city }) => {
             + Add New Clothes
           </button>
         </div>
-        <div>Sign Up</div>
-        <div>Log In</div>
-        // Previous Code
-        {/* <Link to="/profile" className="header__profile-link">
+        <div>
+          <button
+            type="text"
+            className="header__register-button"
+            onClick={onRegisterClick}
+          >
+            Sign Up
+          </button>
+        </div>
+        <div>
+          <button
+            type="text"
+            className="header__login-button"
+            onClick={onLoginClick}
+          >
+            Log In
+          </button>
+        </div>
+        {/* Previous Code */}
+        <Link to="/profile" className="header__profile-link">
           <div>Kif Francis</div>
         </Link>
         <div>
           <img src={avatarImage} alt="logo" className="header__avatar-image" />
-        </div> */}
+        </div>
       </div>
     </header>
   );

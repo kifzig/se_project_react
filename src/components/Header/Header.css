@@ -10,7 +10,9 @@
   font-weight: 700;
 }
 
-.header__add-clothes-button {
+.header__add-clothes-button,
+.header__login-button,
+.header__register-button {
   font-family: "CabinetGrotesk-Bold", serif;
   font-size: 20px;
   background: none;
@@ -19,6 +21,10 @@
 }
 
 .header__add-clothes-button:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.header__login-button:hover {
   color: rgba(0, 0, 0, 0.6);
 }
 

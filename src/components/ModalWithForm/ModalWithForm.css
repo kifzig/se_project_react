@@ -17,7 +17,7 @@
 .modal__content {
   background-color: #fff;
   max-width: 496px;
-  height: 436px;
+  height: 400px;
   width: 100%;
   border-radius: 20px;
   padding: 34px;
@@ -114,4 +114,19 @@
 .modal__submit_button:hover {
   background-color: rgba(0, 0, 0, 0.6);
   transition: background-color 1s;
+}
+
+.modal__form_footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.modal__extra_content {
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  color: gray;
+  text-decoration: none;
 }

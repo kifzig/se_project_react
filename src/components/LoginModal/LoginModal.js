@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import "./LoginModal.css";
 
-// Login Modal has Email - email, Password - password, Log In button, Sign Up Link
-
-const LoginModal = ({ handleCloseModal, onAddItem, isOpen }) => {
+const LoginModal = ({ handleCloseModal, onLogin, isOpen }) => {
   const [email, setEmail] = useState("");
-
   const handleEmailChange = (e) => {
     // Adapt for email-username
     setEmail(e.target.value);
@@ -18,7 +16,7 @@ const LoginModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ email, password });
+    onLogin({ email, password }); // Right now just set to console.log
   };
 
   return (
@@ -29,6 +27,7 @@ const LoginModal = ({ handleCloseModal, onAddItem, isOpen }) => {
       buttonText={"Log In"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      extraContent={<span className="modal__or_signup">or Sign Up</span>}
     >
       <div className="modal__input_wrapper">
         <label className="modal__label_input">

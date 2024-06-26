@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import ItemModal from "../ItemModal/ItemModal";
 import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
@@ -37,6 +38,10 @@ function App() {
     setActiveModal("login");
   };
 
+  const handleRegisterModal = () => {
+    setActiveModal("register");
+  };
+
   const handleCloseModal = () => {
     setActiveModal("");
   };
@@ -63,6 +68,14 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  const handleLogin = (values) => {
+    console.log(values);
+  };
+
+  const handleRegister = (values) => {
+    console.log(values);
   };
 
   const handleDeleteItem = (values) => {
@@ -95,9 +108,7 @@ function App() {
   useEffect(() => {
     const handleEscClose = (evt) => {
       if (evt.key === "Escape") {
-        {
-          handleCloseModal();
-        }
+        handleCloseModal();
       }
     };
 
@@ -145,7 +156,12 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <Header onCreateModal={handleCreateModal} city={location} />
+      <Header
+        onCreateModal={handleCreateModal}
+        onLoginClick={handleLoginModal}
+        onRegisterClick={handleRegisterModal}
+        city={location}
+      />
       <Switch>
         <Route path="/profile">
           <Profile
@@ -182,7 +198,14 @@ function App() {
         <LoginModal
           handleCloseModal={handleCloseModal}
           isOpen={activeModal === "login"}
-          onAddItem={handleAddItemSubmit} // This needs to be changed
+          onLogin={handleLogin} // This needs to be changed - only console.log
+        />
+      )}
+      {activeModal === "register" && (
+        <RegisterModal
+          handleCloseModal={handleCloseModal}
+          isOpen={activeModal === "register"}
+          onRegister={handleRegister} // This needs to be changed - only console.log
         />
       )}
     </CurrentTemperatureUnitContext.Provider>
