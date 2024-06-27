@@ -163,6 +163,7 @@ function App() {
         city={location}
       />
       <Switch>
+        {/* How do I protect the profile route? */}
         <Route path="/profile">
           <Profile
             onSelectCard={handleSelectedCard}
