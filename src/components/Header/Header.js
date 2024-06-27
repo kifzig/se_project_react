@@ -51,7 +51,7 @@ const Header = ({ onCreateModal, onLoginClick, onRegisterClick, city }) => {
             Log In
           </button>
         </div>
-        {/* Previous Code */}
+        {/* Previous Code Below*/}
         <Link to="/profile" className="header__profile-link">
           <div>Kif Francis</div>
         </Link>

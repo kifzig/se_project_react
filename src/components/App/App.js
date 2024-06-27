@@ -18,7 +18,8 @@ import {
   deleteClothingItem,
   addClothingItem,
 } from "../../utils/Api";
-
+import { signin, signup } from "../../utils/auth";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"; // import our wrapper component
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
   const [isDay, setDayOrNight] = useState(true);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingArray, setClothingArray] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -71,7 +73,14 @@ function App() {
   };
 
   const handleLogin = (values) => {
-    console.log(values);
+    signin(values)
+      .then(() => {
+        setLoggedIn(true);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleRegister = (values) => {
@@ -93,6 +102,8 @@ function App() {
         console.error(err);
       });
   };
+
+  //useEffect for signin and signup?
 
   useEffect(() => {
     getClothingItems()
@@ -164,13 +175,13 @@ function App() {
       />
       <Switch>
         {/* How do I protect the profile route? */}
-        <Route path="/profile">
+        <ProtectedRoute path="/profile" loggedIn={loggedIn}>
           <Profile
             onSelectCard={handleSelectedCard}
             clothingArr={clothingArray}
             onCreateModal={handleCreateModal}
           ></Profile>
-        </Route>
+        </ProtectedRoute>
         <Route exact path="/">
           <Main
             weatherTemp={temp}
@@ -199,7 +210,7 @@ function App() {
         <LoginModal
           handleCloseModal={handleCloseModal}
           isOpen={activeModal === "login"}
-          onLogin={handleLogin} // This needs to be changed - only console.log
+          onLogin={handleLogin}
         />
       )}
       {activeModal === "register" && (

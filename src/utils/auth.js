@@ -18,3 +18,16 @@ export const signup = (name, avatar, email, password) => {
     body: JSON.stringify({ name, avatar, email, password }),
   }).then(processServerResponse);
 };
+
+// Sign In - Log In
+
+export const signin = (email, password) => {
+  return (fetch(`${BASE_URL}/signin`),
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  }).then(processServerResponse);
+};
