@@ -9,7 +9,7 @@ export const processServerResponse = (res) => {
 
 // Sign Up - Registration
 export const signup = (name, avatar, email, password) => {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${BASE_URL}/auth/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -22,12 +22,29 @@ export const signup = (name, avatar, email, password) => {
 // Sign In - Log In
 
 export const signin = (email, password) => {
-  return (fetch(`${BASE_URL}/signin`),
-  {
+  return fetch(`${BASE_URL}/auth/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
   }).then(processServerResponse);
+};
+
+// Fetch User Data
+export const fetchUserData = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (!data) {
+        throw new Error("Failed to fetch user data");
+      }
+      return data;
+    });
 };

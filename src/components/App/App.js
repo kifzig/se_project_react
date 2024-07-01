@@ -12,13 +12,13 @@ import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import {
   getClothingItems,
   deleteClothingItem,
   addClothingItem,
 } from "../../utils/Api";
-import { signin, signup } from "../../utils/auth";
+import { signin, signup, fetchUserData } from "../../utils/auth";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"; // import our wrapper component
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
@@ -31,6 +31,8 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingArray, setClothingArray] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  const history = useHistory();
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -73,13 +75,24 @@ function App() {
   };
 
   const handleLogin = (values) => {
-    signin(values)
-      .then(() => {
+    signin(values.email, values.password)
+      .then((data) => {
+        console.log(data);
+        const { token } = data;
+        localStorage.setItem("jwt", token);
+        return fetchUserData(token);
+        // setLoggedIn(true);
+        // console.log(values);
+        // handleCloseModal();
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
         setLoggedIn(true);
         handleCloseModal();
+        history.push("/profile");
       })
       .catch((err) => {
-        console.error(err);
+        console.log(err);
       });
   };
 
