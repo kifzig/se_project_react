@@ -16,7 +16,7 @@ const LoginModal = ({ handleCloseModal, onLogin, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin({ email, password }); // Right now just set to console.log
+    onLogin({ email, password });
   };
 
   return (

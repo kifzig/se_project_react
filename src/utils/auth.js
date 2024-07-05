@@ -9,7 +9,7 @@ export const processServerResponse = (res) => {
 
 // Sign Up - Registration
 export const signup = (name, avatar, email, password) => {
-  return fetch(`${BASE_URL}/auth/signup`, {
+  return fetch(`${BASE_URL}/users/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -22,7 +22,7 @@ export const signup = (name, avatar, email, password) => {
 // Sign In - Log In
 
 export const signin = (email, password) => {
-  return fetch(`${BASE_URL}/auth/signin`, {
+  return fetch(`${BASE_URL}/users/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

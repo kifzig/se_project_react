@@ -77,27 +77,40 @@ function App() {
   const handleLogin = (values) => {
     signin(values.email, values.password)
       .then((data) => {
-        console.log(data);
         const { token } = data;
         localStorage.setItem("jwt", token);
         return fetchUserData(token);
-        // setLoggedIn(true);
-        // console.log(values);
-        // handleCloseModal();
       })
       .then((userData) => {
         setCurrentUser(userData);
         setLoggedIn(true);
         handleCloseModal();
+        console.log("Success");
         history.push("/profile");
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Error in handlelogin");
       });
   };
 
   const handleRegister = (values) => {
-    console.log(values);
+    signup(values.name, values.avatar, values.email, values.password)
+      .then((data) => {
+        const { token } = data;
+        localStorage.setItem("jwt", token);
+        return fetchUserData(token);
+      })
+      .then((userData) => {
+        console.log("From handle register");
+        setCurrentUser(userData);
+        setLoggedIn(true);
+        handleCloseModal();
+        console.log("Success from Register");
+        history.push("profile"); // Maybe I need to go to signin URL instead
+      })
+      .catch((err) => {
+        console.log("Error in handlelRegister");
+      });
   };
 
   const handleDeleteItem = (values) => {
