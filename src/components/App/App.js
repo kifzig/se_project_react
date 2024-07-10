@@ -214,12 +214,23 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <Header
+        {/* <Header
           onCreateModal={handleCreateModal}
           onLoginClick={handleLoginModal}
           onRegisterClick={handleRegisterModal}
           city={location}
-        />
+        /> */}
+
+        {isLoggedIn && (
+          <Header
+            onCreateModal={handleCreateModal}
+            onLoginClick={handleLoginModal}
+            onRegisterClick={handleRegisterModal}
+            city={location}
+            // currentUser,
+          />
+        )}
+
         <Switch>
           {/* How do I protect the profile route? */}
           <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
