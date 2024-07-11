@@ -9,7 +9,13 @@ const currentDate = new Date().toLocaleString("default", {
   day: "numeric",
 });
 
-const Header = ({ onCreateModal, onLoginClick, onRegisterClick, city }) => {
+const Header = ({
+  onCreateModal,
+  onLoginClick,
+  onRegisterClick,
+  city,
+  isLoggedIn,
+}) => {
   return (
     <header className="header">
       <div className="header__logo">
@@ -25,13 +31,15 @@ const Header = ({ onCreateModal, onLoginClick, onRegisterClick, city }) => {
       <div className="header__avatar-logo">
         <ToggleSwitch />
         <div>
-          <button
-            type="text"
-            className="header__add-clothes-button"
-            onClick={onCreateModal}
-          >
-            + Add New Clothes
-          </button>
+          {isLoggedIn && (
+            <button
+              type="text"
+              className="header__add-clothes-button"
+              onClick={onCreateModal}
+            >
+              + Add New Clothes
+            </button>
+          )}
         </div>
         <div>
           <button
@@ -51,13 +59,29 @@ const Header = ({ onCreateModal, onLoginClick, onRegisterClick, city }) => {
             Log In
           </button>
         </div>
-        {/* Previous Code Below*/}
+
+        {isLoggedIn && (
+          <>
+            <Link to="/profile" className="header__profile-link">
+              <div>Kif Francis</div>
+            </Link>
+            <div>
+              <img
+                src={avatarImage}
+                alt="logo"
+                className="header__avatar-image"
+              />
+            </div>
+          </>
+        )}
+
+        {/* Previous Code Below
         <Link to="/profile" className="header__profile-link">
           <div>Kif Francis</div>
         </Link>
         <div>
           <img src={avatarImage} alt="logo" className="header__avatar-image" />
-        </div>
+        </div> */}
       </div>
     </header>
   );

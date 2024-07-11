@@ -221,7 +221,16 @@ function App() {
           city={location}
         /> */}
 
-        {isLoggedIn && (
+        <Header
+          onCreateModal={handleCreateModal}
+          onLoginClick={handleLoginModal}
+          onRegisterClick={handleRegisterModal}
+          city={location}
+          isLoggedIn={isLoggedIn}
+          // currentUser,
+        />
+
+        {/* {!isLoggedIn && (
           <Header
             onCreateModal={handleCreateModal}
             onLoginClick={handleLoginModal}
@@ -229,7 +238,7 @@ function App() {
             city={location}
             // currentUser,
           />
-        )}
+        )} */}
 
         <Switch>
           {/* How do I protect the profile route? */}
