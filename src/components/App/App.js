@@ -104,22 +104,27 @@ function App() {
   };
 
   const handleRegister = (values) => {
+    console.log("Register values: ", values);
     signup(values.name, values.avatar, values.email, values.password)
       .then((data) => {
+        console.log("Signup response data", data);
         const { token } = data;
+        if (!token) {
+          throw new Error("No token found in signup response");
+        }
         localStorage.setItem("jwt", token);
         return fetchUserData(token);
       })
       .then((userData) => {
-        console.log("From handle register");
+        console.log("User data: ", userData);
+        handleCloseModal();
         setCurrentUser(userData);
         setIsLoggedIn(true);
-        handleCloseModal();
-        console.log("Success from Register");
+        console.log("From handle register");
         history.push("profile");
       })
       .catch((err) => {
-        console.log("Error in handlelRegister");
+        console.log("Error in handlelRegister: ", err.message);
       });
   };
 

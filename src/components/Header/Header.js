@@ -3,6 +3,8 @@ import avatarImage from "../../images/avatar_kif.png";
 import wtwrLogo from "../../images/logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
@@ -16,6 +18,9 @@ const Header = ({
   city,
   isLoggedIn,
 }) => {
+  const currentUser = useContext(CurrentUserContext);
+  console.log(currentUser);
+
   return (
     <header className="header">
       <div className="header__logo">
@@ -41,47 +46,43 @@ const Header = ({
             </button>
           )}
         </div>
-        <div>
-          <button
-            type="text"
-            className="header__register-button"
-            onClick={onRegisterClick}
-          >
-            Sign Up
-          </button>
-        </div>
-        <div>
-          <button
-            type="text"
-            className="header__login-button"
-            onClick={onLoginClick}
-          >
-            Log In
-          </button>
-        </div>
+        {!isLoggedIn && (
+          <>
+            <div>
+              <button
+                type="text"
+                className="header__register-button"
+                onClick={onRegisterClick}
+              >
+                Sign Up
+              </button>
+            </div>
+            <div>
+              <button
+                type="text"
+                className="header__login-button"
+                onClick={onLoginClick}
+              >
+                Log In
+              </button>
+            </div>
+          </>
+        )}
 
         {isLoggedIn && (
           <>
             <Link to="/profile" className="header__profile-link">
-              <div>Kif Francis</div>
+              <div>{currentUser.name}</div>
             </Link>
             <div>
               <img
-                src={avatarImage}
+                src={currentUser.avatar}
                 alt="logo"
                 className="header__avatar-image"
               />
             </div>
           </>
         )}
-
-        {/* Previous Code Below
-        <Link to="/profile" className="header__profile-link">
-          <div>Kif Francis</div>
-        </Link>
-        <div>
-          <img src={avatarImage} alt="logo" className="header__avatar-image" />
-        </div> */}
       </div>
     </header>
   );

@@ -12,11 +12,16 @@ export const signup = (name, avatar, email, password) => {
   return fetch(`${BASE_URL}/users/signup`, {
     method: "POST",
     headers: {
-      Accept: "application/json",
+      // Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then(processServerResponse);
+  })
+    .then(processServerResponse)
+    .then((data) => {
+      console.log("Processed signup response: ", data);
+      return data;
+    });
 };
 
 // Sign In - Log In
@@ -33,6 +38,7 @@ export const signin = (email, password) => {
 
 // Fetch User Data
 export const fetchUserData = (token) => {
+  console.log("Fetching user data with token", token);
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
