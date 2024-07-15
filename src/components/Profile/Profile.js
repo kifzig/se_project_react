@@ -1,5 +1,4 @@
 import React from "react";
-// import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import avatarImage from "../../images/avatar_kif.png";
 import "./Profile.css";
@@ -10,7 +9,7 @@ import { useContext } from "react";
 // SideBar
 // ClothesSection
 
-const Profile = ({ onSelectCard, clothingArr, onCreateModal }) => {
+const Profile = ({ onSelectCard, clothingArr, onCreateModal, onLogOut }) => {
   const currentUser = useContext(CurrentUserContext);
   console.log(currentUser);
 
@@ -40,7 +39,7 @@ const Profile = ({ onSelectCard, clothingArr, onCreateModal }) => {
       </div>
 
       <div className="profile__content">
-        <SideBar />
+        <SideBar onLogOut={onLogOut} />
         <ClothesSection
           onSelectCard={onSelectCard}
           clothingArr={clothingArr}

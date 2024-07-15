@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory, useNavigate } from "react-router-dom";
 import {
   getClothingItems,
   deleteClothingItem,
@@ -57,6 +57,13 @@ function App() {
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+  };
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    setCurrentUser({});
+    history.push("/");
+    history.push("/");
   };
 
   const handleLoggedInStatus = () => {
@@ -252,6 +259,7 @@ function App() {
               onSelectCard={handleSelectedCard}
               clothingArr={clothingArray}
               onCreateModal={handleCreateModal}
+              onLogOut={handleLogOut}
             ></Profile>
           </ProtectedRoute>
           <Route exact path="/">

@@ -1,3 +1,13 @@
 .sidebar {
   width: 300px;
 }
+
+.sidebar__logout-button,
+.sidebar__profile-button {
+  margin-top: 15px;
+  font-family: "CabinetGrotesk-Bold", serif;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
