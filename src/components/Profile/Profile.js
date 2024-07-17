@@ -11,7 +11,6 @@ import { useContext } from "react";
 
 const Profile = ({ onSelectCard, clothingArr, onCreateModal, onLogOut }) => {
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
 
   return (
     <div className="profile">

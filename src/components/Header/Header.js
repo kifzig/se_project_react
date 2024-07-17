@@ -19,7 +19,6 @@ const Header = ({
   isLoggedIn,
 }) => {
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
 
   return (
     <header className="header">

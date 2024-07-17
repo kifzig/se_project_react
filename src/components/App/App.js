@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
-import { Switch, Route, useHistory, useNavigate } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import {
   getClothingItems,
   deleteClothingItem,
@@ -66,10 +66,10 @@ function App() {
     history.push("/");
   };
 
-  const handleLoggedInStatus = () => {
-    if (isLoggedIn === false) setIsLoggedIn(true);
-    if (isLoggedIn === true) setIsLoggedIn(false);
-  };
+  // const handleLoggedInStatus = () => {
+  //   if (isLoggedIn === false) setIsLoggedIn(true);
+  //   if (isLoggedIn === true) setIsLoggedIn(false);
+  // };
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -77,6 +77,7 @@ function App() {
   };
 
   const handleAddItemSubmit = (values) => {
+    console.log("handleitemsubmit");
     console.log(values);
     addClothingItem(values.name, values.imageUrl, values.weather)
       .then((data) => {
@@ -94,7 +95,6 @@ function App() {
     signin(values.email, values.password)
       .then((data) => {
         const { token } = data;
-        console.log(token);
         localStorage.setItem("jwt", token);
         return fetchUserData(token);
       })
@@ -102,7 +102,6 @@ function App() {
         handleCloseModal();
         setCurrentUser(userData);
         setIsLoggedIn(true);
-        console.log("Success");
         history.push("/profile");
       })
       .catch((err) => {

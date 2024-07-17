@@ -87,3 +87,11 @@
 .item_modal__delete-clothing-button:hover {
   color: rgba(255, 77, 0, 0.6);
 }
+
+.item__delete-button_visible {
+  display: block;
+}
+
+.item__delete-button_hidden {
+  display: none;
+}

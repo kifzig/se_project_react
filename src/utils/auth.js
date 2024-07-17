@@ -38,7 +38,6 @@ export const signin = (email, password) => {
 
 // Fetch User Data
 export const fetchUserData = (token) => {
-  console.log("Fetching user data with token", token);
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
