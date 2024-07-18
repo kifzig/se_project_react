@@ -10,11 +10,7 @@ const SideBar = ({ onLogOut }) => {
   return (
     <div className="sidebar">
       <div>
-        <button
-          type="text"
-          className="sidebar__profile-button"
-          onClick={localStorage.clear()}
-        >
+        <button type="text" className="sidebar__profile-button">
           Change profile data
         </button>
       </div>
@@ -22,7 +18,7 @@ const SideBar = ({ onLogOut }) => {
         <button
           type="text"
           className="sidebar__logout-button"
-          onClick={onLogOut}
+          onClick={() => localStorage.clear()}
         >
           Log out
         </button>

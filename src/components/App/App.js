@@ -135,7 +135,8 @@ function App() {
   };
 
   const handleDeleteItem = (values) => {
-    deleteClothingItem(values.id)
+    console.log(values);
+    deleteClothingItem(values._id)
       .then((data) => {
         const idToDelete = values.id;
         const updatedArray = clothingArray.filter((item) => {

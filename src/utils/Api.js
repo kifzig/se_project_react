@@ -16,9 +16,14 @@ export const getClothingItems = () => {
 
 // Delete an item
 export const deleteClothingItem = (id) => {
+  const token = localStorage.getItem("jwt");
+
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
   }).then(processServerResponse);
 };
 
@@ -32,7 +37,9 @@ export const addClothingItem = (clothingName, imageLoc, weatherType) => {
       imageUrl: imageLoc,
       weather: weatherType,
     }),
-    headers: { "Content-Type": "application/json" },
-    authorization: `Bearer ${token}`,
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
   }).then(processServerResponse);
 };
