@@ -24,6 +24,7 @@ export const deleteClothingItem = (id) => {
 
 // Add an item
 export const addClothingItem = (clothingName, imageLoc, weatherType) => {
+  const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items/`, {
     method: "POST",
     body: JSON.stringify({
@@ -32,5 +33,6 @@ export const addClothingItem = (clothingName, imageLoc, weatherType) => {
       weather: weatherType,
     }),
     headers: { "Content-Type": "application/json" },
+    authorization: `Bearer ${token}`,
   }).then(processServerResponse);
 };

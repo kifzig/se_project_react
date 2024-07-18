@@ -135,7 +135,6 @@ function App() {
   };
 
   const handleDeleteItem = (values) => {
-    console.log(values);
     deleteClothingItem(values.id)
       .then((data) => {
         const idToDelete = values.id;
