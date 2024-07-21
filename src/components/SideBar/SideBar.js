@@ -18,7 +18,7 @@ const SideBar = ({ onLogOut }) => {
         <button
           type="text"
           className="sidebar__logout-button"
-          onClick={() => localStorage.clear()}
+          onClick={onLogOut}
         >
           Log out
         </button>

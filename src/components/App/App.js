@@ -62,7 +62,7 @@ function App() {
   const handleLogOut = () => {
     localStorage.clear();
     setCurrentUser({});
-    history.push("/");
+    setIsLoggedIn(false);
     history.push("/");
   };
 
