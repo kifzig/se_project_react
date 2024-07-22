@@ -1,7 +1,7 @@
 import React from "react";
 import "./SideBar.css";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useContext } from "react";
+// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+// import { useContext } from "react";
 
 // SideBar
 // ClothesSection
@@ -18,7 +18,7 @@ const SideBar = ({ onLogOut }) => {
         <button
           type="text"
           className="sidebar__logout-button"
-          onClick={onLogOut}
+          onClick={() => onLogOut()}
         >
           Log out
         </button>

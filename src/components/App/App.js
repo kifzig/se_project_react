@@ -66,11 +66,6 @@ function App() {
     history.push("/");
   };
 
-  // const handleLoggedInStatus = () => {
-  //   if (isLoggedIn === false) setIsLoggedIn(true);
-  //   if (isLoggedIn === true) setIsLoggedIn(false);
-  // };
-
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
@@ -79,12 +74,20 @@ function App() {
   const handleAddItemSubmit = (values) => {
     console.log("handleitemsubmit");
     console.log(values);
-    addClothingItem(values.name, values.imageUrl, values.weather)
+    addClothingItem(
+      values.name,
+      values.imageUrl,
+      values.weather,
+      currentUser._id
+    )
       .then((data) => {
         const newClothing = [data, ...clothingArray];
-
-        handleCloseModal();
+        console.log("New clothing array ", newClothing);
         setClothingArray(newClothing);
+        handleCloseModal();
+      })
+      .then(() => {
+        history.push("/profile");
       })
       .catch((err) => {
         console.error(err);
@@ -138,12 +141,17 @@ function App() {
     console.log(values);
     deleteClothingItem(values._id)
       .then((data) => {
-        const idToDelete = values.id;
+        console.log(data);
+        const idToDelete = values._id;
         const updatedArray = clothingArray.filter((item) => {
-          return item.id !== idToDelete;
+          return item._id !== idToDelete;
         });
+        console.log(updatedArray); // This is blank
         setClothingArray(updatedArray);
         handleCloseModal();
+      })
+      .then(() => {
+        history.push("/profile");
       })
       .catch((err) => {
         console.error(err);

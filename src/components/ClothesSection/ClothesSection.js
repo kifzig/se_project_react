@@ -11,6 +11,8 @@ const ClothesSection = ({ onSelectCard, clothingArr }) => {
   const userClothingArr = clothingArr.filter(
     (item) => item.owner === currentUser._id
   );
+  console.log("clothArr in ClothingSection ", clothingArr);
+  console.log("userClothingArr in ClothingSection ", userClothingArr);
 
   return (
     <section className="clothingsection">
