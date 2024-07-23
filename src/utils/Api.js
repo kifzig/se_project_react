@@ -28,7 +28,7 @@ export const deleteClothingItem = (id) => {
 };
 
 // Add an item
-export const addClothingItem = (clothingName, imageLoc, weatherType) => {
+export const addClothingItem = (clothingName, imageLoc, weatherType, owner) => {
   const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items/`, {
     method: "POST",
@@ -36,6 +36,7 @@ export const addClothingItem = (clothingName, imageLoc, weatherType) => {
       name: clothingName,
       imageUrl: imageLoc,
       weather: weatherType,
+      owner: owner,
     }),
     headers: {
       authorization: `Bearer ${token}`,

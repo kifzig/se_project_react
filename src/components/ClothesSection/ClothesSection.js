@@ -8,6 +8,7 @@ import { useContext } from "react";
 
 const ClothesSection = ({ onSelectCard, clothingArr }) => {
   const currentUser = useContext(CurrentUserContext);
+  console.log(currentUser._id);
   const userClothingArr = clothingArr.filter(
     (item) => item.owner === currentUser._id
   );
