@@ -6,11 +6,15 @@ import "./SideBar.css";
 // SideBar
 // ClothesSection
 
-const SideBar = ({ onLogOut }) => {
+const SideBar = ({ onLogOut, onEditProfile }) => {
   return (
     <div className="sidebar">
       <div>
-        <button type="text" className="sidebar__profile-button">
+        <button
+          type="text"
+          className="sidebar__profile-button"
+          onClick={onEditProfile}
+        >
           Change profile data
         </button>
       </div>

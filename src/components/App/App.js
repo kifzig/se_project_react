@@ -7,6 +7,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ItemModal from "../ItemModal/ItemModal";
@@ -20,7 +21,7 @@ import {
   deleteClothingItem,
   addClothingItem,
 } from "../../utils/Api";
-import { signin, signup, fetchUserData } from "../../utils/auth";
+import { signin, signup, editProfile, fetchUserData } from "../../utils/auth";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"; // import our wrapper component
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -134,6 +135,20 @@ function App() {
       })
       .catch((err) => {
         console.log("Error in handlelRegister: ", err.message);
+      });
+  };
+
+  const handleEditProfile = (values) => {
+    editProfile(values)
+      .then((userData) => {
+        console.log("Profile values: ", values);
+        handleCloseModal();
+        setCurrentUser(userData);
+        setIsLoggedIn(true);
+        history.push("/profile");
+      })
+      .catch((err) => {
+        console.log("Error in handleEditProfile");
       });
   };
 
@@ -267,6 +282,7 @@ function App() {
               clothingArr={clothingArray}
               onCreateModal={handleCreateModal}
               onLogOut={handleLogOut}
+              onEditProfile={handleEditProfile}
             ></Profile>
           </ProtectedRoute>
           <Route exact path="/">
@@ -284,6 +300,13 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
             onAddItem={handleAddItemSubmit}
+          />
+        )}
+        {activeModal === "editProfile" && (
+          <EditProfileModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "editProfile"}
+            onEditProfile={handleEditProfile}
           />
         )}
         {activeModal === "preview" && (

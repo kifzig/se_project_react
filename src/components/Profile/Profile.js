@@ -1,6 +1,6 @@
 import React from "react";
 import ClothesSection from "../ClothesSection/ClothesSection";
-import avatarImage from "../../images/avatar_kif.png";
+// import avatarImage from "../../images/avatar_kif.png";
 import "./Profile.css";
 import SideBar from "../SideBar/SideBar.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -9,7 +9,13 @@ import { useContext } from "react";
 // SideBar
 // ClothesSection
 
-const Profile = ({ onSelectCard, clothingArr, onCreateModal, onLogOut }) => {
+const Profile = ({
+  onSelectCard,
+  clothingArr,
+  onCreateModal,
+  onLogOut,
+  onEditProfile,
+}) => {
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -38,7 +44,7 @@ const Profile = ({ onSelectCard, clothingArr, onCreateModal, onLogOut }) => {
       </div>
 
       <div className="profile__content">
-        <SideBar onLogOut={onLogOut} />
+        <SideBar onLogOut={onLogOut} onEditProfile={onEditProfile} />
         <ClothesSection
           onSelectCard={onSelectCard}
           clothingArr={clothingArr}
