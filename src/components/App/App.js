@@ -51,6 +51,10 @@ function App() {
     setActiveModal("register");
   };
 
+  const handleEditProfileModal = () => {
+    setActiveModal("editProfile");
+  };
+
   const handleCloseModal = () => {
     setActiveModal("");
   };
@@ -141,7 +145,6 @@ function App() {
   const handleEditProfile = (values) => {
     editProfile(values)
       .then((userData) => {
-        console.log("Profile values: ", values);
         handleCloseModal();
         setCurrentUser(userData);
         setIsLoggedIn(true);

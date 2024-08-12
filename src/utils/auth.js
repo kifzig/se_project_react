@@ -12,7 +12,6 @@ export const signup = (name, avatar, email, password) => {
   return fetch(`${BASE_URL}/users/signup`, {
     method: "POST",
     headers: {
-      // Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
@@ -42,6 +41,9 @@ export const editProfile = () => {
 
   return fetch(`${BASE_URL}/users/me`, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       name,
       avatar,
