@@ -286,6 +286,7 @@ function App() {
               onCreateModal={handleCreateModal}
               onLogOut={handleLogOut}
               onEditProfile={handleEditProfile}
+              onProfileChange={handleEditProfileModal}
             ></Profile>
           </ProtectedRoute>
           <Route exact path="/">

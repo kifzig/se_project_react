@@ -36,23 +36,21 @@ export const signin = (email, password) => {
 };
 
 //Edit profile
-export const editProfile = () => {
+export const editProfile = ({ name, avatar }) => {
   const token = localStorage.getItem("jwt");
+  console.log("editProfile");
 
   return fetch(`${BASE_URL}/users/me`, {
     method: "POST",
     headers: {
+      authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       name,
       avatar,
     }),
-    headers: {
-      authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    }.then(processServerResponse),
-  });
+  }).then(processServerResponse);
 };
 
 // Fetch User Data

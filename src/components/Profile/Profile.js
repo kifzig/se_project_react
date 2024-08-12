@@ -15,6 +15,7 @@ const Profile = ({
   onCreateModal,
   onLogOut,
   onEditProfile,
+  onProfileChange,
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
@@ -44,7 +45,7 @@ const Profile = ({
       </div>
 
       <div className="profile__content">
-        <SideBar onLogOut={onLogOut} onEditProfile={onEditProfile} />
+        <SideBar onLogOut={onLogOut} onEditProfile={onProfileChange} />
         <ClothesSection
           onSelectCard={onSelectCard}
           clothingArr={clothingArr}
