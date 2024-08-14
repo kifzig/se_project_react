@@ -3,11 +3,13 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const EditProfileModal = ({ handleCloseModal, onEditProfile, isOpen }) => {
   const [name, setName] = useState(""); // Not sure if this variable will need to be changed.
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
 
   const [avatar, setAvatar] = useState("");
+
   const handleAvatarChange = (e) => {
     setAvatar(e.target.value);
   };

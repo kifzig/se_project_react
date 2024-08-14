@@ -145,9 +145,9 @@ function App() {
   const handleEditProfile = (values) => {
     editProfile(values)
       .then((userData) => {
-        handleCloseModal();
         setCurrentUser(userData);
-        setIsLoggedIn(true);
+        handleCloseModal();
+        console.log(userData);
         history.push("/profile");
       })
       .catch((err) => {

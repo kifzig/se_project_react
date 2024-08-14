@@ -41,7 +41,7 @@ export const editProfile = ({ name, avatar }) => {
   console.log("editProfile");
 
   return fetch(`${BASE_URL}/users/me`, {
-    method: "POST",
+    method: "PATCH",
     headers: {
       authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
