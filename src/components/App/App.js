@@ -145,7 +145,7 @@ function App() {
   const handleEditProfile = (values) => {
     editProfile(values)
       .then((userData) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
         handleCloseModal();
         console.log(userData);
         history.push("/profile");
