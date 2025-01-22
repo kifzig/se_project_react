@@ -1,11 +1,11 @@
-.clothing_card {
+.clothing-card {
   position: relative;
   border: 5px black;
   display: flex;
   justify-content: center;
 }
 
-.clothing_card__card_image {
+.clothing-card__image {
   width: 325px;
   height: 328px;
   border-radius: 10px;
@@ -13,28 +13,44 @@
   cursor: pointer;
 }
 
-.clothing_card__card_name {
+.clothing-card__like-icon {
+  width: 18px;
+  height: 15px;
+  fill: none;
+  cursor: pointer;
+  padding-right: 5px;
+}
+
+.clothing-card__like-icon_liked {
+  fill: #000;
+}
+
+.clothing-card__info-container {
   position: absolute;
-  top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #fff;
+}
+
+.clothing-card__name {
   text-align: center;
   font-family: "CabinetGrotesk-Bold";
   font-size: 16px;
   line-height: 20px;
   color: rgba(0, 0, 0, 0.6);
-  background-color: #fff;
-
   border-radius: 4px;
   padding: 5px 10px;
 }
 
 @media all and (max-width: 660px) {
-  .clothing_card__card_image {
+  .clothing-card__image {
     width: 164px;
     height: 164px;
     padding: 0px;
   }
 
-  .clothing_card__card_name {
+  .clothing-card__name {
     top: 7px;
     height: 15px;
     width: 50px;

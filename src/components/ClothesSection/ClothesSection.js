@@ -8,12 +8,9 @@ import { useContext } from "react";
 
 const ClothesSection = ({ onSelectCard, clothingArr }) => {
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser._id);
   const userClothingArr = clothingArr.filter(
     (item) => item.owner === currentUser._id
   );
-  console.log("clothArr in ClothingSection ", clothingArr);
-  console.log("userClothingArr in ClothingSection ", userClothingArr);
 
   return (
     <section className="clothingsection">
@@ -28,6 +25,7 @@ const ClothesSection = ({ onSelectCard, clothingArr }) => {
             item={item}
             onSelectCard={onSelectCard}
             key={item.id}
+            onCardLike={handleCardLike}
             className="clothingsection__card"
           />
         ))}

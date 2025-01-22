@@ -44,3 +44,9 @@ export const addClothingItem = (clothingName, imageLoc, weatherType, owner) => {
     },
   }).then(processServerResponse);
 };
+
+// Add a card like
+export const addCardLike = () => {};
+
+// Remove a card like
+export const removeCardLike = () => {};
