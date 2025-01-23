@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 // Likewise, update this component to show only the cards added by the current user.
 
-const ClothesSection = ({ onSelectCard, clothingArr }) => {
+const ClothesSection = ({ onSelectCard, clothingArr, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
   const userClothingArr = clothingArr.filter(
     (item) => item.owner === currentUser._id
@@ -25,7 +25,7 @@ const ClothesSection = ({ onSelectCard, clothingArr }) => {
             item={item}
             onSelectCard={onSelectCard}
             key={item.id}
-            onCardLike={handleCardLike}
+            onCardLike={onCardLike}
             className="clothingsection__card"
           />
         ))}

@@ -46,7 +46,25 @@ export const addClothingItem = (clothingName, imageLoc, weatherType, owner) => {
 };
 
 // Add a card like
-export const addCardLike = () => {};
+export const addCardLike = (itemId) => {
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then(processServerResponse);
+};
 
 // Remove a card like
-export const removeCardLike = () => {};
+export const removeCardLike = (itemId) => {
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then(processServerResponse);
+};

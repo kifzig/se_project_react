@@ -121,7 +121,6 @@ function App() {
   };
 
   const handleRegister = (values) => {
-    console.log("Register values: ", values);
     signup(values.name, values.avatar, values.email, values.password)
       .then((data) => {
         console.log("Signup response data", data);
@@ -159,7 +158,6 @@ function App() {
   };
 
   const handleDeleteItem = (values) => {
-    console.log(values);
     deleteClothingItem(values._id)
       .then((data) => {
         console.log(data);
@@ -188,9 +186,10 @@ function App() {
         // the first argument is the card's id
         addCardLike(id, token)
           .then((updatedCard) => {
-            setClothingArray((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
-            );
+            setClothingArray((cards) => {
+              console.log("CARDS ", cards);
+              return cards.map((c) => (c._id === id ? updatedCard.data : c));
+            });
           })
           .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
@@ -199,7 +198,7 @@ function App() {
         removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingArray((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err));
@@ -221,6 +220,7 @@ function App() {
     getClothingItems()
       .then((data) => {
         const clothingArray = data;
+
         setClothingArray(clothingArray);
       })
       .catch((err) => {
@@ -315,6 +315,7 @@ function App() {
               onLogOut={handleLogOut}
               onEditProfile={handleEditProfile}
               onProfileChange={handleEditProfileModal}
+              onCardLike={handleCardLike}
             ></Profile>
           </ProtectedRoute>
           <Route exact path="/">
@@ -323,6 +324,7 @@ function App() {
               onSelectCard={handleSelectedCard}
               dayOrNight={isDay}
               clothingArr={clothingArray}
+              onCardLike={handleCardLike}
             />
           </Route>
         </Switch>

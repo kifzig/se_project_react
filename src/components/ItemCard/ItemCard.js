@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./ItemCard.css";
 import { ReactComponent as LikeHeart } from "../../images/like_heart.svg";
 
-const ItemCard = ({ item, onSelectCard, handleCardLike }) => {
+const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   const [liked, setLiked] = useState(
     item.likes.includes(localStorage.getItem("userId"))
   );
 
-  const handleLikeIcon = () => {
+  const handleLike = () => {
     setLiked((prevLiked) => !prevLiked);
-    handleCardLike({ id: item._id, isLiked: !liked });
+    onCardLike({ id: item._id, isLiked: !liked });
   };
 
   return (
@@ -23,9 +23,11 @@ const ItemCard = ({ item, onSelectCard, handleCardLike }) => {
       <div className="clothing-card__info-container">
         <p className="clothing-card__name">{item.name}</p>
         <LikeHeart
-          onClick={handleLikeIcon}
+          onClick={handleLike}
           className={`clothing-card__like-icon ${
-            liked ? "clothing-card__like-icon_liked" : ""
+            liked
+              ? "clothing-card__like-icon_liked"
+              : "clothing-card__like-icon"
           }`}
         />
       </div>

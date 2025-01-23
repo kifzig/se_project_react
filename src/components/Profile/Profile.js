@@ -1,6 +1,5 @@
 import React from "react";
 import ClothesSection from "../ClothesSection/ClothesSection";
-// import avatarImage from "../../images/avatar_kif.png";
 import "./Profile.css";
 import SideBar from "../SideBar/SideBar.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -16,6 +15,7 @@ const Profile = ({
   onLogOut,
   onEditProfile,
   onProfileChange,
+  onCardLike,
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
@@ -50,6 +50,7 @@ const Profile = ({
           onSelectCard={onSelectCard}
           clothingArr={clothingArr}
           className="clothingsection"
+          onCardLike={onCardLike}
         />
       </div>
     </div>
