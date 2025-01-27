@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./ItemCard.css";
 import { ReactComponent as LikeHeart } from "../../images/like_heart.svg";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
-const ItemCard = ({ item, onSelectCard, onCardLike }) => {
+const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
   const [liked, setLiked] = useState(
     item.likes.includes(localStorage.getItem("userId"))
   );
@@ -22,14 +24,16 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
       />
       <div className="clothing-card__info-container">
         <p className="clothing-card__name">{item.name}</p>
-        <LikeHeart
-          onClick={handleLike}
-          className={`clothing-card__like-icon ${
-            liked
-              ? "clothing-card__like-icon_liked"
-              : "clothing-card__like-icon"
-          }`}
-        />
+        {isLoggedIn && (
+          <LikeHeart
+            onClick={handleLike}
+            className={`clothing-card__like-icon ${
+              liked
+                ? "clothing-card__like-icon_liked"
+                : "clothing-card__like-icon"
+            }`}
+          />
+        )}
       </div>
     </div>
   );

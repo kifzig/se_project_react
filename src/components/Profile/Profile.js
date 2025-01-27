@@ -16,6 +16,7 @@ const Profile = ({
   onEditProfile,
   onProfileChange,
   onCardLike,
+  isLoggedIn,
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
@@ -51,6 +52,7 @@ const Profile = ({
           clothingArr={clothingArr}
           className="clothingsection"
           onCardLike={onCardLike}
+          isLoggedIn={isLoggedIn}
         />
       </div>
     </div>

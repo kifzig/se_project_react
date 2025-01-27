@@ -11,9 +11,8 @@ const Main = ({
   dayOrNight,
   clothingArr,
   onCardLike,
+  isLoggedIn,
 }) => {
-  console.log("CLOTHING ARR", clothingArr);
-
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   const getWeatherType = (temp) => {
@@ -45,12 +44,13 @@ const Main = ({
           Today is {temp}° {currentTemperatureUnit} / You may want to wear:
         </div>
         <div className="clothing__cards">
-          {filteredCards.map((item) => (
+          {filteredCards.map((item, index) => (
             <ItemCard
               item={item}
               onSelectCard={onSelectCard}
-              key={item.id}
+              key={item.id || index}
               onCardLike={onCardLike}
+              isLoggedIn={isLoggedIn}
             />
           ))}
         </div>
