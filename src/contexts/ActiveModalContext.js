@@ -1,4 +1,4 @@
-import React, { children, createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 const ActiveModalContext = createContext();
 
