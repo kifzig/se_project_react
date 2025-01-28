@@ -1,16 +1,10 @@
 import React, { useState, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
-import { ActiveModalContext } from "../../contexts/ActiveModalContext";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
-const LoginModal = ({
-  handleCloseModal,
-  onLogin,
-  isOpen,
-  handleRegisterModal,
-}) => {
-  const { setActiveModal } = useContext(ActiveModalContext);
+const LoginModal = ({ handleCloseModal, onLogin, isOpen, onRegisterClick }) => {
+  console.log("isOpen ", isOpen);
 
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
@@ -29,12 +23,6 @@ const LoginModal = ({
     onLogin({ email, password });
   };
 
-  // const handleSwitchToRegister = () => {
-  //   // setIsRegisterOpen(true);
-  //   console.log("handleswitch");
-  //   handleCloseModal();
-  // };
-
   return (
     <div>
       {" "}
@@ -49,7 +37,8 @@ const LoginModal = ({
           extraContent={
             <span
               onClick={() => {
-                setActiveModal("register");
+                // setActiveModal("register");
+                onRegisterClick();
                 console.log("REGISTER");
               }}
               className="modal__or_signup"
@@ -91,13 +80,6 @@ const LoginModal = ({
           </div>
         </ModalWithForm>
       )}
-      {
-        <RegisterModal
-          handleCloseModal={handleCloseModal}
-          onRegister={handleRegisterModal}
-          isOpen={true}
-        />
-      }
     </div>
   );
 };

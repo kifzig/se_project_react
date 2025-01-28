@@ -19,8 +19,10 @@ const Header = ({
   city,
   isLoggedIn,
 }) => {
-  const { activeModal, setActiveModal } = useContext(ActiveModalContext);
-  console.log(activeModal);
+  // const { activeModal, setActiveModal } = useContext(ActiveModalContext);
+  // console.log(activeModal);
+  // May not need to pass this or to use Context
+
   const currentUser = useContext(CurrentUserContext);
 
   return (
