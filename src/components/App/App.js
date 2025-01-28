@@ -11,7 +11,7 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ItemModal from "../ItemModal/ItemModal";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
@@ -27,10 +27,6 @@ import { signin, signup, editProfile, fetchUserData } from "../../utils/auth";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"; // import our wrapper component
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import {
-  ActiveModalContext,
-  ActiveModalProvider,
-} from "../../contexts/ActiveModalContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -284,17 +280,16 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <ActiveModalProvider value={{ activeModal, setActiveModal }}>
-          <Header
-            onCreateModal={handleCreateModal}
-            onLoginClick={handleLoginModal}
-            onRegisterClick={handleRegisterModal}
-            city={location}
-            isLoggedIn={isLoggedIn}
-            // currentUser,
-          />
+        <Header
+          onCreateModal={handleCreateModal}
+          onLoginClick={handleLoginModal}
+          onRegisterClick={handleRegisterModal}
+          city={location}
+          isLoggedIn={isLoggedIn}
+          // currentUser,
+        />
 
-          {/* {!isLoggedIn && (
+        {/* {!isLoggedIn && (
           <Header
             onCreateModal={handleCreateModal}
             onLoginClick={handleLoginModal}
@@ -304,70 +299,68 @@ function App() {
           />
         )} */}
 
-          <Switch>
-            <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
-              <Profile
-                onSelectCard={handleSelectedCard}
-                clothingArr={clothingArray}
-                onCreateModal={handleCreateModal}
-                onLogOut={handleLogOut}
-                onEditProfile={handleEditProfile}
-                onProfileChange={handleEditProfileModal}
-                onCardLike={handleCardLike}
-                isLoggedIn={isLoggedIn}
-              ></Profile>
-            </ProtectedRoute>
-            <Route exact path="/">
-              <Main
-                weatherTemp={temp}
-                onSelectCard={handleSelectedCard}
-                dayOrNight={isDay}
-                clothingArr={clothingArray}
-                onCardLike={handleCardLike}
-                isLoggedIn={isLoggedIn}
-              />
-            </Route>
-          </Switch>
-          <Footer />
-          {activeModal === "create" && (
-            <AddItemModal
-              handleCloseModal={handleCloseModal}
-              isOpen={activeModal === "create"}
-              onAddItem={handleAddItemSubmit}
-            />
-          )}
-          {activeModal === "editProfile" && (
-            <EditProfileModal
-              handleCloseModal={handleCloseModal}
-              isOpen={activeModal === "editProfile"}
+        <Switch>
+          <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
+            <Profile
+              onSelectCard={handleSelectedCard}
+              clothingArr={clothingArray}
+              onCreateModal={handleCreateModal}
+              onLogOut={handleLogOut}
               onEditProfile={handleEditProfile}
+              onProfileChange={handleEditProfileModal}
+              onCardLike={handleCardLike}
+              isLoggedIn={isLoggedIn}
+            ></Profile>
+          </ProtectedRoute>
+          <Route exact path="/">
+            <Main
+              weatherTemp={temp}
+              onSelectCard={handleSelectedCard}
+              dayOrNight={isDay}
+              clothingArr={clothingArray}
+              onCardLike={handleCardLike}
+              isLoggedIn={isLoggedIn}
             />
-          )}
-          {activeModal === "preview" && (
-            <ItemModal
-              selectedCard={selectedCard}
-              onClose={handleCloseModal}
-              onDeleteItem={handleDeleteItem}
-            />
-          )}
-          {activeModal === "login" && (
-            <LoginModal
-              handleCloseModal={handleCloseModal}
-              isOpen={activeModal === "login"}
-              onLogin={handleLogin}
-              onRegisterClick={handleRegisterModal}
-            />
-          )}
-          {activeModal === "register" && (
-            <RegisterModal
-              handleCloseModal={handleCloseModal}
-              isOpen={activeModal === "register"}
-              onRegister={handleRegister}
-              onLoginClick={handleLoginModal}
-              setActiveModal={setActiveModal}
-            />
-          )}
-        </ActiveModalProvider>
+          </Route>
+        </Switch>
+        <Footer />
+        {activeModal === "create" && (
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "create"}
+            onAddItem={handleAddItemSubmit}
+          />
+        )}
+        {activeModal === "editProfile" && (
+          <EditProfileModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "editProfile"}
+            onEditProfile={handleEditProfile}
+          />
+        )}
+        {activeModal === "preview" && (
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            onDeleteItem={handleDeleteItem}
+          />
+        )}
+        {activeModal === "login" && (
+          <LoginModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "login"}
+            onLogin={handleLogin}
+            onRegisterClick={handleRegisterModal}
+          />
+        )}
+        {activeModal === "register" && (
+          <RegisterModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "register"}
+            onRegister={handleRegister}
+            onLoginClick={handleLoginModal}
+          />
+        )}
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>
   );

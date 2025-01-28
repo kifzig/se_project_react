@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
-// Register Modal - Sign Up - Email, Password, Name, Avatar URL
-// name, avatar, email, password
-
-const RegisterModal = ({ handleCloseModal, onRegister, isOpen }) => {
+const RegisterModal = ({
+  handleCloseModal,
+  onRegister,
+  isOpen,
+  onLoginClick,
+}) => {
   const [name, setName] = useState(""); // Not sure if this variable will need to be changed.
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -40,7 +42,16 @@ const RegisterModal = ({ handleCloseModal, onRegister, isOpen }) => {
       buttonText={"Sign Up"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      extraContent={<span className="modal__or_login">or Log in</span>} // Create CSS for modal__or_login
+      extraContent={
+        <span
+          onClick={() => {
+            onLoginClick();
+          }}
+          className="modal__or_login"
+        >
+          or Log in
+        </span>
+      }
     >
       <div className="modal__input_wrapper">
         <label className="modal__label_input">

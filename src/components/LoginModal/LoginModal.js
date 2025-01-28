@@ -1,11 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
-import RegisterModal from "../RegisterModal/RegisterModal";
 
 const LoginModal = ({ handleCloseModal, onLogin, isOpen, onRegisterClick }) => {
-  console.log("isOpen ", isOpen);
-
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -15,8 +12,6 @@ const LoginModal = ({ handleCloseModal, onLogin, isOpen, onRegisterClick }) => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
-  // const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,9 +32,7 @@ const LoginModal = ({ handleCloseModal, onLogin, isOpen, onRegisterClick }) => {
           extraContent={
             <span
               onClick={() => {
-                // setActiveModal("register");
                 onRegisterClick();
-                console.log("REGISTER");
               }}
               className="modal__or_signup"
             >
