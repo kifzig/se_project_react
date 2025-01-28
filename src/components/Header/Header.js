@@ -4,6 +4,7 @@ import wtwrLogo from "../../images/logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { ActiveModalContext } from "../../contexts/ActiveModalContext";
 import { useContext } from "react";
 
 const currentDate = new Date().toLocaleString("default", {
@@ -18,6 +19,8 @@ const Header = ({
   city,
   isLoggedIn,
 }) => {
+  const { activeModal, setActiveModal } = useContext(ActiveModalContext);
+  console.log(activeModal);
   const currentUser = useContext(CurrentUserContext);
 
   return (

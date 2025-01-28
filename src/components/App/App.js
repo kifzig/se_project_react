@@ -11,7 +11,7 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ItemModal from "../ItemModal/ItemModal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
@@ -27,7 +27,10 @@ import { signin, signup, editProfile, fetchUserData } from "../../utils/auth";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"; // import our wrapper component
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { ActiveModalProvider } from "../../contexts/ActiveModalContext";
+import {
+  ActiveModalContext,
+  ActiveModalProvider,
+} from "../../contexts/ActiveModalContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -47,12 +50,14 @@ function App() {
   };
 
   const handleLoginModal = () => {
+    console.log("handleLoginModal triggered");
     setActiveModal("login");
   };
 
   const handleRegisterModal = () => {
     setActiveModal("register");
     console.log("register");
+    console.log("activeModal:", activeModal);
   };
 
   const handleEditProfileModal = () => {

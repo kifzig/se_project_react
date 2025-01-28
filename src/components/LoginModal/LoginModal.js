@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 import { ActiveModalContext } from "../../contexts/ActiveModalContext";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 const LoginModal = ({
   handleCloseModal,
@@ -47,7 +48,10 @@ const LoginModal = ({
           onSubmit={handleSubmit}
           extraContent={
             <span
-              onClick={() => setActiveModal("register")}
+              onClick={() => {
+                setActiveModal("register");
+                console.log("REGISTER");
+              }}
               className="modal__or_signup"
             >
               or Sign Up
@@ -87,13 +91,13 @@ const LoginModal = ({
           </div>
         </ModalWithForm>
       )}
-      {/* {isRegisterOpen && (
+      {
         <RegisterModal
           handleCloseModal={handleCloseModal}
           onRegister={handleRegisterModal}
-          isOpen={isRegisterOpen}
+          isOpen={true}
         />
-      )} */}
+      }
     </div>
   );
 };
