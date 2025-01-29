@@ -88,9 +88,9 @@ function App() {
       values.weather,
       currentUser._id
     )
-      .then((data) => {
-        const newClothing = [data, ...clothingArray];
-        console.log("New clothing array ", newClothing);
+      .then((response) => {
+        const newItem = response.data;
+        const newClothing = [newItem, ...clothingArray];
         setClothingArray(newClothing);
         handleCloseModal();
       })
@@ -183,7 +183,6 @@ function App() {
     // Check if this card is now liked
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
-
         // the first argument is the card's id
         addCardLike(id, token)
           .then((updatedCard) => {
