@@ -24,7 +24,7 @@ const ClothesSection = ({
           <ItemCard
             item={item}
             onSelectCard={onSelectCard}
-            key={item.id}
+            key={item._id}
             onCardLike={onCardLike}
             className="clothingsection__card"
             isLoggedIn={isLoggedIn}
