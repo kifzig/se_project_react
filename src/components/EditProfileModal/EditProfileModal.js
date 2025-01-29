@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const EditProfileModal = ({ handleCloseModal, onEditProfile, isOpen }) => {
+  const currentUser = useContext(CurrentUserContext);
+
   const [name, setName] = useState(""); // Not sure if this variable will need to be changed.
 
   const handleNameChange = (e) => {
@@ -9,6 +12,13 @@ const EditProfileModal = ({ handleCloseModal, onEditProfile, isOpen }) => {
   };
 
   const [avatar, setAvatar] = useState("");
+
+  useEffect(() => {
+    if (isOpen && currentUser) {
+      setName(currentUser.name || "");
+      setAvatar(currentUser.avatar || "");
+    }
+  }, [isOpen, currentUser]);
 
   const handleAvatarChange = (e) => {
     setAvatar(e.target.value);
