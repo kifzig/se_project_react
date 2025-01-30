@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 import { getForecastWeather } from "../../utils/WeatherApi";
 import { parseWeatherData } from "../../utils/WeatherApi";
 import { parseLocation, parseDaytime } from "../../utils/WeatherApi";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory, Redirect } from "react-router-dom";
 import {
   getClothingItems,
   deleteClothingItem,
@@ -199,12 +199,14 @@ function App() {
   };
 
   useEffect(() => {
+    console.log("page load, checking login");
     const token = localStorage.getItem("jwt");
     if (token) {
       fetchUserData(token)
         .then((userData) => {
           setCurrentUser(userData);
           setIsLoggedIn(true);
+          history.push("/");
         })
         .catch(() => localStorage.removeItem("jwt"));
     }
@@ -316,7 +318,11 @@ function App() {
               isLoggedIn={isLoggedIn}
             />
           </Route>
+          <Route path="*">
+            <Redirect to="/" />
+          </Route>
         </Switch>
+
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
