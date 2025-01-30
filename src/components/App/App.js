@@ -51,8 +51,6 @@ function App() {
 
   const handleRegisterModal = () => {
     setActiveModal("register");
-    console.log("register");
-    console.log("activeModal:", activeModal);
   };
 
   const handleEditProfileModal = () => {
@@ -94,7 +92,12 @@ function App() {
         handleCloseModal();
       })
       .then(() => {
-        history.push("/profile");
+        const currentPath = window.location.pathname;
+        if (currentPath === "/") {
+          history.push("/");
+        } else {
+          history.push("/profile");
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -122,7 +125,6 @@ function App() {
   const handleRegister = (values) => {
     signup(values.name, values.avatar, values.email, values.password)
       .then((data) => {
-        console.log("Signup response data", data);
         const { token } = data;
         if (!token) {
           throw new Error("No token found in signup response");
@@ -131,11 +133,9 @@ function App() {
         return fetchUserData(token);
       })
       .then((userData) => {
-        console.log("User data: ", userData);
         handleCloseModal();
         setCurrentUser(userData);
         setIsLoggedIn(true);
-        console.log("From handle register");
         history.push("profile");
       })
       .catch((err) => {
@@ -148,7 +148,6 @@ function App() {
       .then((userData) => {
         setCurrentUser(userData.data);
         handleCloseModal();
-        console.log(userData);
         history.push("/profile");
       })
       .catch((err) => {
@@ -159,12 +158,10 @@ function App() {
   const handleDeleteItem = (values) => {
     deleteClothingItem(values._id)
       .then((data) => {
-        console.log(data);
         const idToDelete = values._id;
         const updatedArray = clothingArray.filter((item) => {
           return item._id !== idToDelete;
         });
-        console.log(updatedArray); // This is blank
         setClothingArray(updatedArray);
         handleCloseModal();
       })
@@ -177,10 +174,8 @@ function App() {
   };
 
   const handleCardLike = ({ id, isLiked }) => {
-    console.log("handleCardLike from App.js");
     const token = localStorage.getItem("jwt");
     // Check if this card is now liked
-    console.log("isLiked from App ", isLiked);
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
         // the first argument is the card's id

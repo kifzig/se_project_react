@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./ItemCard.css";
 import { ReactComponent as LikeHeart } from "../../images/like_heart.svg";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
-  const [liked, setLiked] = useState(
-    item.likes.includes(localStorage.getItem("userId"))
-  );
+  const currentUser = useContext(CurrentUserContext);
+
+  const [liked, setLiked] = useState(item.likes.includes(currentUser._id));
 
   const handleLike = () => {
-    setLiked((prevLiked) => !prevLiked);
-    console.log("handleLike from ItemCard");
-    onCardLike({ id: item._id, isLiked: !liked });
+    setLiked((prevLiked) => {
+      const newLikedState = !prevLiked;
+      onCardLike({ id: item._id, isLiked: !liked });
+      return newLikedState;
+    });
   };
 
   return (
