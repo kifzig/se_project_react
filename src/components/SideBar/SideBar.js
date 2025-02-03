@@ -1,10 +1,5 @@
 import React from "react";
 import "./SideBar.css";
-// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-// import { useContext } from "react";
-
-// SideBar
-// ClothesSection
 
 const SideBar = ({ onLogOut, onEditProfile }) => {
   return (

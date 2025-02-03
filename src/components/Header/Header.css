@@ -64,10 +64,33 @@
   color: #000;
 }
 
+.header__avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+}
+
 .header__avatar-image {
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.header__avatar-placeholder {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #00008b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
   border: 1px solid #000;
 }
 

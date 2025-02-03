@@ -1,11 +1,9 @@
 import "./Header.css";
-import avatarImage from "../../images/avatar_kif.png";
 import wtwrLogo from "../../images/logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { ActiveModalContext } from "../../contexts/ActiveModalContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
@@ -19,11 +17,10 @@ const Header = ({
   city,
   isLoggedIn,
 }) => {
-  // const { activeModal, setActiveModal } = useContext(ActiveModalContext);
-  // console.log(activeModal);
-  // May not need to pass this or to use Context
-
   const currentUser = useContext(CurrentUserContext);
+  const firstLetter = currentUser?.name?.charAt(0).toUpperCase();
+
+  const [isImageBroken, setIsImageBroken] = useState(false);
 
   return (
     <header className="header">
@@ -78,12 +75,17 @@ const Header = ({
             <Link to="/profile" className="header__profile-link">
               <div>{currentUser.name}</div>
             </Link>
-            <div>
-              <img
-                src={currentUser.avatar}
-                alt="logo"
-                className="header__avatar-image"
-              />
+            <div className="header__avatar-container">
+              {!isImageBroken && currentUser?.avatar ? (
+                <img
+                  src={currentUser.avatar}
+                  alt="user avatar"
+                  className="header__avatar-image"
+                  onError={() => setIsImageBroken(true)}
+                />
+              ) : (
+                <div className="header__avatar-placeholder">{firstLetter}</div>
+              )}
             </div>
           </>
         )}
