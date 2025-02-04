@@ -59,7 +59,6 @@ const RegisterModal = ({
           <input
             type="email"
             name="email"
-            maxLength="100"
             placeholder="Email"
             className="modal__input"
             value={email}
@@ -105,11 +104,11 @@ const RegisterModal = ({
             type="url"
             name="avatar"
             minLength="5"
-            maxLength="100"
             placeholder="Avatar URL"
             className="modal__input"
             value={avatar}
             onChange={handleAvatarChange}
+            required
           />
         </label>
       </div>

@@ -10,12 +10,7 @@ export const signup = (name, avatar, email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  })
-    .then(processServerResponse)
-    .then((data) => {
-      console.log("Processed signup response: ", data);
-      return data;
-    });
+  }).then(processServerResponse);
 };
 
 // Sign In - Log In
@@ -56,12 +51,5 @@ export const fetchUserData = (token) => {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (!data) {
-        throw new Error("Failed to fetch user data");
-      }
-      return data;
-    });
+  }).then(processServerResponse);
 };

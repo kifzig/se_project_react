@@ -60,11 +60,11 @@ const EditProfileModal = ({ handleCloseModal, onEditProfile, isOpen }) => {
             type="url"
             name="avatar"
             minLength="5"
-            maxLength="100"
             placeholder="Avatar URL"
             className="modal__input"
             value={avatar}
             onChange={handleAvatarChange}
+            required
           />
         </label>
       </div>
