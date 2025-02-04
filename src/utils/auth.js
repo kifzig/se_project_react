@@ -1,11 +1,6 @@
-const BASE_URL = "http://localhost:3001";
+import { processServerResponse } from "./Api";
 
-export const processServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
+const BASE_URL = "http://localhost:3001";
 
 // Sign Up - Registration
 export const signup = (name, avatar, email, password) => {

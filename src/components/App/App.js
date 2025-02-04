@@ -91,14 +91,6 @@ function App() {
         setClothingArray(newClothing);
         handleCloseModal();
       })
-      .then(() => {
-        const currentPath = window.location.pathname;
-        if (currentPath === "/") {
-          history.push("/");
-        } else {
-          history.push("/profile");
-        }
-      })
       .catch((err) => {
         console.error(err);
       });
@@ -165,9 +157,6 @@ function App() {
         setClothingArray(updatedArray);
         handleCloseModal();
       })
-      .then(() => {
-        history.push("/profile");
-      })
       .catch((err) => {
         console.error(err);
       });
@@ -199,14 +188,13 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("page load, checking login");
     const token = localStorage.getItem("jwt");
     if (token) {
       fetchUserData(token)
         .then((userData) => {
           setCurrentUser(userData);
           setIsLoggedIn(true);
-          history.push("/");
+          // history.push("/");
         })
         .catch(() => localStorage.removeItem("jwt"));
     }
@@ -225,6 +213,8 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (!activeModal) return;
+
     const handleEscClose = (evt) => {
       if (evt.key === "Escape") {
         handleCloseModal();
@@ -236,9 +226,10 @@ function App() {
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, []);
+  }, [activeModal]);
 
   useEffect(() => {
+    if (!activeModal) return;
     const handleClickClose = (evt) => {
       if (
         evt.target.classList.contains("item_modal") ||
@@ -253,7 +244,7 @@ function App() {
     return () => {
       document.removeEventListener("click", handleClickClose);
     };
-  }, []);
+  }, [activeModal]);
 
   useEffect(() => {
     getForecastWeather()
